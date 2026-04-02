@@ -14,6 +14,7 @@
     --highlight: #ffe066;
     --green: #39ff80;
     --card: #181818;
+    --purple: #a090ff;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,26 +48,10 @@
     pointer-events: none;
   }
 
-  h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 8vw, 88px);
-    letter-spacing: 2px;
-    color: var(--fg);
-    line-height: 1;
-  }
-
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 8vw, 88px); letter-spacing: 2px; color: var(--fg); line-height: 1; }
   h1 span { color: var(--accent); }
+  .subtitle { margin-top: 8px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); opacity: 0.9; }
 
-  .subtitle {
-    margin-top: 8px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--highlight);
-    opacity: 0.9;
-  }
-
-  /* Nav tabs */
   nav {
     display: flex;
     gap: 0;
@@ -75,7 +60,6 @@
     overflow-x: auto;
     scrollbar-width: none;
   }
-
   nav::-webkit-scrollbar { display: none; }
 
   .tab {
@@ -94,54 +78,26 @@
     border-left: none;
     border-right: none;
   }
-
   .tab:hover { color: var(--fg); }
   .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-  /* Sections */
-  .section { display: none; padding: 32px; max-width: 960px; }
+  .section { display: none; padding: 32px; max-width: 980px; }
   .section.active { display: block; }
 
-  h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    color: var(--fg);
-  }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 20px; color: var(--fg); }
+  h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
 
-  h3 {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-
-  /* Cards grid */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 28px; }
-
-  .card {
-    background: var(--card);
-    border: 1px solid var(--muted);
-    border-radius: 4px;
-    padding: 20px;
-    transition: border-color 0.2s, transform 0.2s;
-    cursor: default;
-  }
-
+  .card { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 20px; transition: border-color 0.2s, transform 0.2s; }
   .card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .card h3 { margin-bottom: 6px; }
   .card p { font-size: 13px; line-height: 1.65; color: #b0ab9e; }
 
-  /* Do/Don't split */
   .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
   @media (max-width: 600px) { .dodont { grid-template-columns: 1fr; } }
-
   .do-col, .dont-col { background: var(--card); border-radius: 4px; padding: 20px; }
   .do-col { border-left: 3px solid var(--green); }
   .dont-col { border-left: 3px solid var(--accent); }
-
   .do-col h3 { color: var(--green); }
   .dont-col h3 { color: var(--accent); }
 
@@ -149,66 +105,47 @@
   ul li { font-size: 13px; line-height: 1.7; color: #b0ab9e; padding-left: 16px; position: relative; }
   ul li::before { content: '—'; position: absolute; left: 0; color: #555; }
 
-  /* Harold map */
-  .harold-map {
-    background: var(--card);
-    border: 1px solid var(--muted);
-    border-radius: 4px;
-    padding: 24px;
-    margin-bottom: 24px;
-  }
+  .tips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+  .tip { background: var(--card); border: 1px solid var(--muted); border-radius: 2px; padding: 10px 16px; font-size: 12px; line-height: 1.5; color: #b0ab9e; max-width: 300px; }
+  .tip strong { color: var(--highlight); display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
 
-  .beat-row {
-    display: grid;
-    grid-template-columns: 80px 1fr 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 8px;
-    align-items: center;
-  }
+  .harold-map { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 24px; margin-bottom: 24px; }
 
-  .beat-label {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #666;
-  }
+  .beat-row { display: grid; grid-template-columns: 80px 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; align-items: center; }
+  .beat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #666; }
 
-  .beat-cell {
-    background: var(--muted);
-    border-radius: 3px;
-    padding: 10px 12px;
-    font-size: 12px;
-    text-align: center;
-    color: #ccc;
-    border: 1px solid transparent;
-    transition: all 0.2s;
-  }
-
+  .beat-cell { background: var(--muted); border-radius: 3px; padding: 10px 12px; font-size: 12px; text-align: center; color: #ccc; border: 1px solid transparent; }
   .beat-cell.opening { background: #1a1a2e; border-color: #ffe066; color: var(--highlight); font-size: 11px; }
   .beat-cell.group { background: #1a2e1a; border-color: var(--green); color: var(--green); }
   .beat-cell.scene { background: #2e1a1a; border-color: #ff6b35; color: #ff9060; }
   .beat-cell.game { background: #1a1a2e; border-color: #7b68ee; color: #a090ff; }
-  .beat-cell.tag { background: #2e2a1a; border-color: #ffd700; color: #ffd700; }
   .beat-cell.span2 { grid-column: span 2; }
   .beat-cell.span3 { grid-column: span 3; }
 
-  /* Tips pills */
-  .tips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-  .tip {
-    background: var(--card);
-    border: 1px solid var(--muted);
-    border-radius: 2px;
-    padding: 10px 16px;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #b0ab9e;
-    max-width: 300px;
-  }
-  .tip strong { color: var(--highlight); display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+  .mapping-explainer { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 24px; margin-bottom: 20px; }
+  .mapping-explainer p { font-size: 13px; line-height: 1.8; color: #b0ab9e; margin-bottom: 12px; }
+  .mapping-explainer p:last-child { margin-bottom: 0; }
+  .mapping-explainer strong { color: var(--fg); }
 
-  .tag { display: inline-block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: var(--accent); color: #000; padding: 2px 8px; border-radius: 2px; margin-bottom: 12px; }
+  .map-diagram { margin: 24px 0; overflow-x: auto; }
+  .map-diagram svg { min-width: 600px; width: 100%; }
 
-  .divider { border: none; border-top: 1px solid var(--muted); margin: 24px 0; }
+  .transitions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 600px) { .transitions { grid-template-columns: 1fr; } }
+
+  .trans-card { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 20px; }
+  .trans-card .arrow { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); margin-bottom: 4px; display: block; }
+  .trans-card h3 { margin-bottom: 10px; }
+  .trans-card p { font-size: 13px; line-height: 1.65; color: #b0ab9e; margin-bottom: 8px; }
+  .trans-card .rule { font-size: 11px; color: var(--highlight); border-left: 2px solid var(--highlight); padding-left: 10px; margin-top: 10px; line-height: 1.6; }
+
+  .mapping-rules { margin-bottom: 24px; }
+  .rule-row { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+  .rule-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); line-height: 1; min-width: 28px; }
+  .rule-text { font-size: 13px; line-height: 1.65; color: #b0ab9e; padding-top: 4px; }
+  .rule-text strong { color: var(--fg); }
+
+  hr { border: none; border-top: 1px solid var(--muted); margin: 24px 0; }
 </style>
 </head>
 <body>
@@ -219,20 +156,20 @@
 </header>
 
 <nav>
-  <button class="tab active" onclick="show('structure')">Structure</button>
-  <button class="tab" onclick="show('glossary')">Glossary</button>
-  <button class="tab" onclick="show('dodont')">Do's & Don'ts</button>
-  <button class="tab" onclick="show('tips')">Tips & Tricks</button>
+  <button class="tab active" onclick="show('structure', this)">Structure</button>
+  <button class="tab" onclick="show('mapping', this)">Mapping & Beats</button>
+  <button class="tab" onclick="show('glossary', this)">Glossary</button>
+  <button class="tab" onclick="show('dodont', this)">Do's & Don'ts</button>
+  <button class="tab" onclick="show('tips', this)">Tips & Tricks</button>
 </nav>
 
 <!-- STRUCTURE -->
 <div class="section active" id="structure">
   <h2>Harold Structure</h2>
-
   <div class="harold-map">
     <div class="beat-row">
       <div class="beat-label">Opening</div>
-      <div class="beat-cell opening span3">Group Game / Monologue-based opening<br><small>Find the themes. Mine for gold.</small></div>
+      <div class="beat-cell opening span3">Group Game / Monologue-based opening — find the themes, mine for gold</div>
     </div>
     <div class="beat-row">
       <div class="beat-label">Beat 1</div>
@@ -256,73 +193,140 @@
     </div>
     <div class="beat-row">
       <div class="beat-label">Beat 3</div>
-      <div class="beat-cell game span3">Scenes converge / call-backs / tag-outs</div>
+      <div class="beat-cell game span3">Scenes converge / call-backs / tag-outs — worlds collide</div>
+    </div>
+  </div>
+  <p style="font-size:12px; color:#777; line-height:1.7;">Each scene set (A, B, C) explores a different angle of the opening's theme. By Beat 3 the worlds start colliding. ~25–30 min total.</p>
+</div>
+
+<!-- MAPPING & BEATS -->
+<div class="section" id="mapping">
+  <h2>Mapping & Beat Transitions</h2>
+
+  <div class="mapping-explainer">
+    <p><strong>Mapping</strong> is how you track every scene's game, characters, and theme so you know where to go next. Think of it as building a web in your head while watching from the back wall.</p>
+    <p>You're always asking: <strong>What is this scene's game? Who are these characters? What theme from the opening does this connect to?</strong> When you know that, you can call back, heighten, or merge at the right moment.</p>
+  </div>
+
+  <div class="map-diagram">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
+      <rect x="220" y="10" width="240" height="44" rx="4" fill="#1a1a2e" stroke="#ffe066" stroke-width="1.5"/>
+      <text x="340" y="28" fill="#ffe066" font-size="10" text-anchor="middle" letter-spacing="2" font-weight="500">OPENING</text>
+      <text x="340" y="44" fill="#ffe066" font-size="9" text-anchor="middle" opacity="0.7">theme · images · emotion</text>
+
+      <line x1="280" y1="54" x2="100" y2="100" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="340" y1="54" x2="340" y2="100" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="400" y1="54" x2="580" y2="100" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="20" y="100" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="100" y="121" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE A</text>
+      <text x="100" y="138" fill="#b0ab9e" font-size="9" text-anchor="middle">game · chars · world</text>
+
+      <rect x="260" y="100" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="340" y="121" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE B</text>
+      <text x="340" y="138" fill="#b0ab9e" font-size="9" text-anchor="middle">game · chars · world</text>
+
+      <rect x="500" y="100" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="580" y="121" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE C</text>
+      <text x="580" y="138" fill="#b0ab9e" font-size="9" text-anchor="middle">game · chars · world</text>
+
+      <text x="340" y="96" fill="#555" font-size="9" text-anchor="middle" letter-spacing="3">BEAT 1</text>
+
+      <line x1="100" y1="150" x2="100" y2="195" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="340" y1="150" x2="340" y2="195" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="580" y1="150" x2="580" y2="195" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="60" y="162" width="560" height="24" rx="3" fill="#1a2e1a" stroke="#39ff80" stroke-width="1"/>
+      <text x="340" y="178" fill="#39ff80" font-size="9" text-anchor="middle" letter-spacing="3">GROUP GAME — deepen the theme</text>
+
+      <rect x="20" y="195" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5" opacity="0.85"/>
+      <text x="100" y="216" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE A2</text>
+      <text x="100" y="233" fill="#b0ab9e" font-size="9" text-anchor="middle">same game, raised</text>
+
+      <rect x="260" y="195" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5" opacity="0.85"/>
+      <text x="340" y="216" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE B2</text>
+      <text x="340" y="233" fill="#b0ab9e" font-size="9" text-anchor="middle">same game, raised</text>
+
+      <rect x="500" y="195" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5" opacity="0.85"/>
+      <text x="580" y="216" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE C2</text>
+      <text x="580" y="233" fill="#b0ab9e" font-size="9" text-anchor="middle">same game, raised</text>
+
+      <text x="340" y="192" fill="#555" font-size="9" text-anchor="middle" letter-spacing="3">BEAT 2</text>
+
+      <line x1="100" y1="245" x2="270" y2="278" stroke="#a090ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="340" y1="245" x2="340" y2="278" stroke="#a090ff" stroke-width="1.5"/>
+      <line x1="580" y1="245" x2="410" y2="278" stroke="#a090ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+      <rect x="180" y="278" width="320" height="18" rx="3" fill="#1a1a2e" stroke="#a090ff" stroke-width="1.5"/>
+      <text x="340" y="291" fill="#a090ff" font-size="9" text-anchor="middle" letter-spacing="3">BEAT 3 — WORLDS COLLIDE · CALL-BACKS · CONVERGENCE</text>
+    </svg>
+  </div>
+
+  <hr>
+  <h2>How Beats Evolve</h2>
+
+  <div class="mapping-rules">
+    <div class="rule-row">
+      <div class="rule-num">1</div>
+      <div class="rule-text"><strong>Beat 1 — Establish.</strong> Set the world, the characters, and find the game. Don't rush the funny. Lay the foundation. The audience needs to understand who these people are and what's unusual here.</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-num">2</div>
+      <div class="rule-text"><strong>Beat 2 — Heighten.</strong> Return to the SAME characters in a different situation, but the game escalates. The unusual thing is now MORE so. Don't introduce a new game — deepen the existing one. Ask: "If this were true in Beat 1, what's MORE true now?"</div>
+    </div>
+    <div class="rule-row">
+      <div class="rule-num">3</div>
+      <div class="rule-text"><strong>Beat 3 — Converge & pay off.</strong> Worlds can bleed into each other. Characters from Scene A can meet Scene C's world. Call-backs land here. The audience has been tracking everything — reward them. This is where tag-outs, merges, and emotional resolution live.</div>
     </div>
   </div>
 
-  <p style="font-size:12px; color:#777; line-height:1.7;">Each scene set (A, B, C) explores a different angle of the opening's theme. By Beat 3 the worlds start colliding. The Harold is ~25–30 min total.</p>
+  <hr>
+
+  <div class="transitions">
+    <div class="trans-card">
+      <span class="arrow">B1 → B2</span>
+      <h3>Beat 1 to Beat 2</h3>
+      <p>You return to the same characters, but time has passed or situation shifted. The game from Beat 1 should be recognisable — just escalated one clear step.</p>
+      <p>Ask yourself: <em>what does the game WANT to become?</em> Follow that logic.</p>
+      <div class="rule">Don't reset. Don't explain. Just more of the same unusual thing — louder, clearer, weirder.</div>
+    </div>
+    <div class="trans-card">
+      <span class="arrow">B2 → B3</span>
+      <h3>Beat 2 to Beat 3</h3>
+      <p>The Harold starts to collapse in on itself — in a good way. Themes rhyme. Characters cross paths. A line from Scene A might echo in Scene C.</p>
+      <p>No need to force convergence — if you've tracked well, it happens naturally.</p>
+      <div class="rule">Your job here: be a good editor. Know when a scene is done. Trust the map you've built in your head.</div>
+    </div>
+  </div>
+
+  <div class="mapping-explainer">
+    <p><strong>Practical mapping tip:</strong> While watching from the back wall, mentally label each scene: <em>"A is about control. B is about not belonging. C is about being seen."</em> Now you know what themes rhyme. When B's character walks into C's world — that's your convergence moment.</p>
+    <p>Mapping isn't a system — it's <strong>active listening with intent</strong>. The better you map, the better your choices for re-entries, tag-outs, and call-backs.</p>
+  </div>
 </div>
 
 <!-- GLOSSARY -->
 <div class="section" id="glossary">
   <h2>Key Terms</h2>
-
   <div class="grid">
-    <div class="card">
-      <h3>Game of the Scene</h3>
-      <p>The unusual thing that happens + a pattern of making it more and more itself. Find it, name it internally, then heighten it.</p>
-    </div>
-    <div class="card">
-      <h3>Half Game</h3>
-      <p>When only ONE person is playing the game (reacting unusually) while the other plays it straight. Often funnier than both being weird.</p>
-    </div>
-    <div class="card">
-      <h3>Character Game</h3>
-      <p>Game driven by who the person IS (attitude, worldview, want) rather than the situation. The character's logic IS the game.</p>
-    </div>
-    <div class="card">
-      <h3>Monologue</h3>
-      <p>A real story from life, told simply. The group mines it for themes, relationships, and games to use in the Harold.</p>
-    </div>
-    <div class="card">
-      <h3>Group Game</h3>
-      <p>The whole ensemble explores one idea/game together, often in a more abstract or physical way. No scene, just theme.</p>
-    </div>
-    <div class="card">
-      <h3>Heighten</h3>
-      <p>"Yes, and" the game — each beat should take the unusual thing ONE step further. Don't reset, don't explain. Just more.</p>
-    </div>
-    <div class="card">
-      <h3>Voice of Reason</h3>
-      <p>One player reacts "normally" to the absurdity. Creates contrast. Without it, everything is chaos and nothing lands.</p>
-    </div>
-    <div class="card">
-      <h3>Tag-out</h3>
-      <p>Someone runs in, taps a player out, and takes their place — often shifting time, location, or relationship to explore the game further.</p>
-    </div>
-    <div class="card">
-      <h3>Call-back</h3>
-      <p>Revisiting a character, phrase, or idea from earlier in the Harold. The audience remembers. Make it pay off.</p>
-    </div>
-    <div class="card">
-      <h3>Object Work</h3>
-      <p>Physically committing to props/space that aren't there. Grounds scenes in reality and feeds character.</p>
-    </div>
-    <div class="card">
-      <h3>Initiation</h3>
-      <p>The first line or action that starts a scene. Best initiations contain a who, what, and a point of view baked in.</p>
-    </div>
-    <div class="card">
-      <h3>First Unusual Thing</h3>
-      <p>The moment something odd appears in a scene. Stop. Name it. That's probably your game. Build from there.</p>
-    </div>
+    <div class="card"><h3>Game of the Scene</h3><p>The unusual thing that happens + a pattern of making it more and more itself. Find it, name it internally, then heighten it.</p></div>
+    <div class="card"><h3>Half Game</h3><p>When only ONE person is playing the game while the other plays it straight. Often funnier than both being weird.</p></div>
+    <div class="card"><h3>Character Game</h3><p>Game driven by who the person IS — attitude, worldview, want. The character's logic IS the game.</p></div>
+    <div class="card"><h3>Monologue</h3><p>A real story from life, told simply. The group mines it for themes, relationships, and games to use in the Harold.</p></div>
+    <div class="card"><h3>Group Game</h3><p>The whole ensemble explores one idea together, often abstractly. No scene, just theme.</p></div>
+    <div class="card"><h3>Heighten</h3><p>"Yes, and" the game — each beat takes the unusual thing ONE step further. Don't reset, don't explain. Just more.</p></div>
+    <div class="card"><h3>Voice of Reason</h3><p>One player reacts "normally" to the absurdity. Creates contrast. Without it, everything is chaos and nothing lands.</p></div>
+    <div class="card"><h3>Tag-out</h3><p>Someone runs in, taps a player out, takes their place — shifting time, location, or relationship to explore the game further.</p></div>
+    <div class="card"><h3>Call-back</h3><p>Revisiting a character, phrase, or idea from earlier in the Harold. The audience remembers. Make it pay off.</p></div>
+    <div class="card"><h3>Mapping</h3><p>Tracking each scene's game, characters, and theme from the back wall so you know when and how to re-enter, call-back, or converge.</p></div>
+    <div class="card"><h3>Object Work</h3><p>Physically committing to props/space that aren't there. Grounds scenes in reality and feeds character.</p></div>
+    <div class="card"><h3>First Unusual Thing</h3><p>The moment something odd appears. Stop. Name it. That's probably your game. Build from there.</p></div>
   </div>
 </div>
 
 <!-- DO/DON'T -->
 <div class="section" id="dodont">
   <h2>Do's & Don'ts</h2>
-
   <div class="dodont">
     <div class="do-col">
       <h3>✓ Do</h3>
@@ -332,13 +336,13 @@
         <li>Have a clear point of view as your character</li>
         <li>Be specific — "my Ford Fiesta" not "my car"</li>
         <li>React truthfully before being clever</li>
-        <li>Support group games with commitment</li>
+        <li>Map scenes from the back wall actively</li>
         <li>Use the monologue — mine it for real themes</li>
         <li>Trust your scene partner's choices</li>
         <li>Let silence breathe</li>
         <li>Call back — audiences LOVE memory</li>
         <li>Keep the voice of reason grounded</li>
-        <li>Play the game the same way each beat, then escalate</li>
+        <li>Return to the same game in Beat 2, escalated</li>
       </ul>
     </div>
     <div class="dont-col">
@@ -347,15 +351,15 @@
         <li>Block (deny what your partner established)</li>
         <li>Ask questions to get out of commitment</li>
         <li>Chase laughs at the expense of the scene</li>
-        <li>Introduce new games in beat 2 or 3</li>
+        <li>Introduce new games in Beat 2 or 3</li>
         <li>Explain the joke or the game out loud</li>
         <li>Play multiple games at once</li>
         <li>Make your partner wrong</li>
-        <li>Check out when you're not in a scene</li>
+        <li>Switch off when watching from the back</li>
         <li>Drift — keep the game consistent in tone</li>
         <li>Be random instead of unusual</li>
-        <li>Make it about yourself instead of the ensemble</li>
-        <li>Run away from the weird thing — run toward it</li>
+        <li>Force convergence in Beat 3 — trust the map</li>
+        <li>Run away from the weird thing</li>
       </ul>
     </div>
   </div>
@@ -364,29 +368,28 @@
 <!-- TIPS -->
 <div class="section" id="tips">
   <h2>Tips & Tricks</h2>
-
   <div class="tips">
-    <div class="tip"><strong>Find the game</strong>What is the first unusual, specific, or weird thing? Name it. Build from it. That's your game — don't wait.</div>
-    <div class="tip"><strong>If/then thinking</strong>"If this is true in this world — what else is true?" Explore the logic of the game rather than escaping it.</div>
-    <div class="tip"><strong>CROW</strong>Character · Relationship · Objective · Where. Establish these fast. Scenes that drag often lack one of these.</div>
-    <div class="tip"><strong>Commit to emotion</strong>Don't be neutral. Characters with strong feelings create friction and game naturally.</div>
+    <div class="tip"><strong>Find the game</strong>The first unusual, specific, weird thing — name it. Build from it. Don't wait.</div>
+    <div class="tip"><strong>If/then thinking</strong>"If this is true — what else is true?" Explore the logic of the game rather than escaping it.</div>
+    <div class="tip"><strong>CROW</strong>Character · Relationship · Objective · Where. Establish these fast. Scenes that drag often lack one.</div>
+    <div class="tip"><strong>Commit to emotion</strong>Characters with strong feelings create friction and game naturally. Don't be neutral.</div>
     <div class="tip"><strong>Match, then lead</strong>In group games: mirror what others set up, then add one thing. Don't overpower, don't just copy.</div>
-    <div class="tip"><strong>The rule of threes</strong>Game needs ~3 beats to land. First: establish. Second: confirm. Third: audience knows what to expect — then you can subvert or pay off.</div>
-    <div class="tip"><strong>Watching from the back</strong>Your job offstage is to track themes and games so you know when/how to re-enter. Never switch off.</div>
-    <div class="tip"><strong>Tag-outs are gifts</strong>Tag out to explore a DIFFERENT angle of the same game — not to fix, escape, or take over.</div>
-    <div class="tip"><strong>Monologue mining</strong>Listen for the real emotion, the odd detail, the contradiction — not the funny line. That's your material.</div>
-    <div class="tip"><strong>Voice of reason trick</strong>When everything is crazy, being completely normal IS the comedy. Underreact. It creates contrast.</div>
-    <div class="tip"><strong>Improv mantra</strong>"Yes, and" is the foundation — but "yes, and" the GAME, not just the information.</div>
-    <div class="tip"><strong>Personal tip for you</strong>Your improv background in facilitation is gold — you read rooms well. Trust that instinct to feel when the group needs energy vs. space.</div>
+    <div class="tip"><strong>Rule of threes</strong>Game needs ~3 beats to land. Establish → Confirm → Audience expects it → subvert or pay off.</div>
+    <div class="tip"><strong>Map actively</strong>While watching: label each scene by theme. "A=control, B=belonging, C=visibility." That's your convergence roadmap.</div>
+    <div class="tip"><strong>Tag-outs are gifts</strong>Tag out to explore a different angle of the same game — not to fix or escape.</div>
+    <div class="tip"><strong>Monologue mining</strong>Listen for real emotion, odd detail, contradiction — not the funny line. That's your material.</div>
+    <div class="tip"><strong>Voice of reason trick</strong>When everything is crazy, being completely normal IS the comedy. Underreact.</div>
+    <div class="tip"><strong>Beat 2 question</strong>Ask yourself: "What does this game want to become?" Follow that. Don't reinvent.</div>
+    <div class="tip"><strong>Your edge</strong>You read rooms well — trust that. Your facilitation instinct for when a group needs energy vs. space? That's gold in ensemble improv.</div>
   </div>
 </div>
 
 <script>
-  function show(id) {
+  function show(id, el) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    event.target.classList.add('active');
+    el.classList.add('active');
   }
 </script>
 </body>
