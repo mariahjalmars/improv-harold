@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Improv Guide</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%230d0d0d'/%3E%3Crect x='0' y='0' width='512' height='8' fill='%23ff4d00'/%3E%3Ctext x='256' y='300' font-family='Georgia,serif' font-size='280' font-weight='900' fill='%23ff4d00' text-anchor='middle'%3EH%3C/text%3E%3Ctext x='256' y='460' font-family='monospace' font-size='68' fill='%23ffe066' text-anchor='middle' letter-spacing='8'%3EIMPROV%3C/text%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Improv Guide">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Improv+Guide%22%2C%22short_name%22%3A%22Improv%22%2C%22background_color%22%3A%22%230d0d0d%22%2C%22theme_color%22%3A%22%230d0d0d%22%2C%22display%22%3A%22standalone%22%7D">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -16,90 +22,33 @@
     --card: #181818;
     --purple: #a090ff;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: 'DM Mono', monospace; min-height: 100vh; padding: 0 0 60px; }
 
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'DM Mono', monospace;
-    min-height: 100vh;
-    padding: 0 0 60px;
-  }
-
-  header {
-    padding: 48px 32px 32px;
-    border-bottom: 2px solid var(--accent);
-    position: relative;
-    overflow: hidden;
-  }
-
-  header::before {
-    content: 'IMPROV';
-    position: absolute;
-    right: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 180px;
-    color: var(--muted);
-    opacity: 0.18;
-    line-height: 1;
-    pointer-events: none;
-  }
-
+  header { padding: 48px 32px 32px; border-bottom: 2px solid var(--accent); position: relative; overflow: hidden; }
+  header::before { content: 'IMPROV'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 180px; color: var(--muted); opacity: 0.18; line-height: 1; pointer-events: none; }
   h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 8vw, 88px); letter-spacing: 2px; color: var(--fg); line-height: 1; }
   h1 span { color: var(--accent); }
   .subtitle { margin-top: 8px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); opacity: 0.9; }
 
-  nav {
-    display: flex;
-    gap: 0;
-    padding: 0 32px;
-    border-bottom: 1px solid var(--muted);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
+  nav { display: flex; gap: 0; padding: 0 32px; border-bottom: 1px solid var(--muted); overflow-x: auto; scrollbar-width: none; }
   nav::-webkit-scrollbar { display: none; }
-
-  .tab {
-    padding: 14px 20px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: #888;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
-    background: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-  }
+  .tab { padding: 14px 20px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #888; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none; }
   .tab:hover { color: var(--fg); }
   .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
   .section { display: none; padding: 32px; max-width: 980px; }
   .section.active { display: block; }
 
-  h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 1px;
-    margin: 32px 0 12px;
-    color: var(--fg);
-  }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; margin: 36px 0 12px; color: var(--fg); }
   h2:first-child { margin-top: 0; }
-
   h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
 
   p.body { font-size: 13px; line-height: 1.85; color: #b0ab9e; margin-bottom: 14px; }
   p.body strong { color: var(--fg); }
   p.body em { color: var(--highlight); font-style: normal; }
 
-  hr { border: none; border-top: 1px solid var(--muted); margin: 28px 0; }
+  hr { border: none; border-top: 1px solid var(--muted); margin: 32px 0; }
 
   /* Beat map */
   .harold-map { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 24px; margin: 20px 0; }
@@ -112,76 +61,90 @@
   .beat-cell.converge { background: #1a1a2e; border-color: #7b68ee; color: #a090ff; }
   .beat-cell.span3 { grid-column: span 3; }
 
-  /* Beat deep-dive blocks */
-  .beat-block {
-    border: 1px solid var(--muted);
-    border-radius: 4px;
-    margin-bottom: 16px;
-    overflow: hidden;
-  }
-
-  .beat-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 20px;
-    background: var(--card);
-    border-bottom: 1px solid var(--muted);
-  }
-
-  .beat-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    line-height: 1;
-    color: var(--accent);
-    min-width: 32px;
-  }
-
-  .beat-title-block {}
+  /* Beat blocks */
+  .beat-block { border: 1px solid var(--muted); border-radius: 4px; margin-bottom: 16px; overflow: hidden; }
+  .beat-header { display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: var(--card); border-bottom: 1px solid var(--muted); }
+  .beat-number { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; color: var(--accent); min-width: 32px; }
   .beat-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; color: var(--fg); }
   .beat-tagline { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #666; margin-top: 2px; }
-
   .beat-body { padding: 20px; background: #111; }
   .beat-body p { font-size: 13px; line-height: 1.8; color: #b0ab9e; margin-bottom: 12px; }
   .beat-body p:last-child { margin-bottom: 0; }
   .beat-body strong { color: var(--fg); }
   .beat-body em { color: var(--highlight); font-style: normal; }
-
-  .beat-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 14px;
-  }
-
-  .pill {
-    font-size: 11px;
-    letter-spacing: 1px;
-    padding: 5px 12px;
-    border-radius: 2px;
-    border: 1px solid var(--muted);
-    color: #888;
-  }
+  .beat-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .pill { font-size: 11px; letter-spacing: 1px; padding: 5px 12px; border-radius: 2px; border: 1px solid var(--muted); color: #888; }
   .pill.do { border-color: #1a3a1a; color: var(--green); background: #0d1a0d; }
   .pill.dont { border-color: #3a1a1a; color: #ff6b35; background: #1a0d0d; }
 
-  /* Mapping diagram */
-  .map-diagram { margin: 20px 0; overflow-x: auto; }
-  .map-diagram svg { min-width: 600px; width: 100%; }
-
-  /* Mapping explainer */
-  .info-box {
-    background: var(--card);
-    border: 1px solid var(--muted);
-    border-left: 3px solid var(--highlight);
-    border-radius: 4px;
-    padding: 20px;
-    margin: 16px 0;
-  }
+  /* Info boxes */
+  .info-box { background: var(--card); border: 1px solid var(--muted); border-left: 3px solid var(--highlight); border-radius: 4px; padding: 20px; margin: 16px 0; }
   .info-box p { font-size: 13px; line-height: 1.8; color: #b0ab9e; margin-bottom: 10px; }
   .info-box p:last-child { margin-bottom: 0; }
   .info-box strong { color: var(--fg); }
   .info-box em { color: var(--highlight); font-style: normal; }
+
+  /* Example trace */
+  .example-block { background: #0a0a0a; border: 1px solid #2a2a2a; border-radius: 4px; margin: 20px 0; overflow: hidden; }
+  .example-header { background: #1a1a1a; padding: 14px 20px; border-bottom: 1px solid #2a2a2a; }
+  .example-header h3 { margin: 0; color: var(--highlight); }
+  .example-header p { font-size: 11px; color: #666; margin-top: 4px; letter-spacing: 1px; }
+  .example-body { padding: 0; }
+
+  .ex-row { display: grid; grid-template-columns: 100px 1fr; border-bottom: 1px solid #1a1a1a; }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-label { padding: 16px; background: #111; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #1a1a1a; }
+  .ex-label-title { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }
+  .ex-label-sub { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-top: 2px; }
+  .ex-label.b1 .ex-label-title { color: #ff9060; }
+  .ex-label.b2 .ex-label-title { color: #ff6020; }
+  .ex-label.b3 .ex-label-title { color: var(--purple); }
+  .ex-label.map .ex-label-title { color: var(--highlight); font-size: 13px; }
+  .ex-label.opening .ex-label-title { color: var(--highlight); }
+  .ex-content { padding: 16px 20px; }
+  .ex-content .scene-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+  .ex-content .scene-desc { font-size: 13px; line-height: 1.7; color: #b0ab9e; margin-bottom: 8px; }
+  .ex-content .scene-desc:last-child { margin-bottom: 0; }
+  .ex-content .game-tag { display: inline-block; font-size: 10px; letter-spacing: 1px; background: #1a1a2e; color: var(--purple); border: 1px solid #2a2a3e; padding: 3px 10px; border-radius: 2px; margin-bottom: 8px; }
+  .ex-content .note { font-size: 11px; color: #666; border-left: 2px solid #2a2a2a; padding-left: 10px; margin-top: 8px; line-height: 1.6; }
+  .ex-content .note.good { border-color: #1a3a1a; color: #5a9a5a; }
+  .ex-content .note.bad { border-color: #3a1a1a; color: #9a5a5a; }
+
+  /* Second beat types */
+  .beat2-types { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  @media (max-width: 600px) { .beat2-types { grid-template-columns: 1fr; } }
+  .type-card { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 18px; }
+  .type-card h3 { margin-bottom: 8px; }
+  .type-card.time { border-top: 2px solid var(--green); }
+  .type-card.time h3 { color: var(--green); }
+  .type-card.analogous { border-top: 2px solid var(--purple); }
+  .type-card.analogous h3 { color: var(--purple); }
+  .type-card.tangential { border-top: 2px solid #ff9060; }
+  .type-card.tangential h3 { color: #ff9060; }
+  .type-card p { font-size: 13px; line-height: 1.65; color: #b0ab9e; margin-bottom: 8px; }
+  .type-card .example { font-size: 11px; color: #666; border-left: 2px solid #2a2a2a; padding-left: 10px; line-height: 1.6; margin-top: 8px; }
+
+  /* Beginner box */
+  .beginner-box { background: #0f1a0f; border: 2px solid var(--green); border-radius: 6px; padding: 24px; margin: 20px 0; }
+  .beginner-box .beginner-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+  .beginner-box p { font-size: 14px; line-height: 1.9; color: #c8e8c8; margin-bottom: 12px; }
+  .beginner-box p:last-child { margin-bottom: 0; }
+  .beginner-box strong { color: #fff; }
+
+  .mistake-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  @media (max-width: 600px) { .mistake-vs { grid-template-columns: 1fr; } }
+  .mistake-bad { background: #1a0a0a; border: 2px solid #5a2020; border-radius: 4px; padding: 18px; }
+  .mistake-good { background: #0a1a0a; border: 2px solid #205a20; border-radius: 4px; padding: 18px; }
+  .mistake-bad .m-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #ff6060; margin-bottom: 10px; }
+  .mistake-good .m-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+  .mistake-bad p, .mistake-good p { font-size: 13px; line-height: 1.7; color: #b0ab9e; margin-bottom: 8px; }
+  .mistake-bad p:last-child, .mistake-good p:last-child { margin-bottom: 0; }
+  .mistake-bad strong { color: #ff8080; }
+  .mistake-good strong { color: #80d880; }
+
+  /* Map diagram */
+  .map-diagram { margin: 20px 0; overflow-x: auto; }
+  .map-diagram svg { min-width: 600px; width: 100%; }
 
   /* Transitions */
   .transitions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
@@ -198,20 +161,9 @@
   .card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .card h3 { margin-bottom: 6px; }
   .card p { font-size: 13px; line-height: 1.65; color: #b0ab9e; }
-  .card .badge {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    background: #1a1400;
-    color: var(--highlight);
-    border: 1px solid #554400;
-    padding: 2px 7px;
-    border-radius: 2px;
-    margin-bottom: 8px;
-  }
+  .card .badge { display: inline-block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; background: #1a1400; color: var(--highlight); border: 1px solid #554400; padding: 2px 7px; border-radius: 2px; margin-bottom: 8px; }
 
-  /* Do/Don't */
+  /* Do/Dont */
   .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
   @media (max-width: 600px) { .dodont { grid-template-columns: 1fr; } }
   .do-col, .dont-col { background: var(--card); border-radius: 4px; padding: 20px; }
@@ -243,14 +195,13 @@
   <button class="tab" onclick="show('tips', this)">Tips & Tricks</button>
 </nav>
 
-<!-- THE HAROLD (merged with mapping) -->
+<!-- THE HAROLD -->
 <div class="section active" id="harold">
 
   <h2>What is the Harold?</h2>
   <p class="body">The Harold is a long-form improv structure — roughly 25–30 minutes — performed by an ensemble of 6–9 people. It starts with a single suggestion from the audience, which gets explored through three beats of scenes and two group games. By the end, all the threads connect.</p>
-  <p class="body">The Harold is not about plot. It's about <strong>finding a game</strong> — the unusual thing that makes a scene funny — and then heightening it across three beats while weaving it together with everything else happening in the show.</p>
+  <p class="body">The Harold is not about plot or story. It's about <strong>finding a game</strong> — the unusual thing that makes a scene funny — and then heightening it across three beats while the whole ensemble weaves everything together.</p>
 
-  <!-- Overview map -->
   <div class="harold-map">
     <div class="beat-row">
       <div class="beat-label">Opening</div>
@@ -284,13 +235,12 @@
 
   <hr>
 
-  <!-- The Opening -->
+  <!-- Opening -->
   <h2>The Opening</h2>
-  <p class="body">The Harold begins with a suggestion — one word from the audience. The ensemble then does a <strong>group opening</strong>: a shared, often abstract exploration of that suggestion. It could be a pattern game, a monologue, a physical exploration, or a mix. The goal is not to be funny — it's to generate <em>raw material</em>: themes, images, emotions, and relationships that can feed the scenes to come.</p>
+  <p class="body">The Harold begins with a suggestion — one word from the audience. The ensemble does a <strong>group opening</strong>: a shared, often abstract exploration of that suggestion. The goal is not to be funny — it's to generate <em>raw material</em>: themes, images, emotions, relationships that can feed the scenes to come.</p>
   <p class="body">Think of the opening like tuning an instrument together before a concert. You're agreeing on the key without spelling it out. The best openings feel like one mind thinking, not six people performing.</p>
-
   <div class="info-box">
-    <p><strong>What to listen for in an opening:</strong> real emotion, contradiction, a specific image, a surprising relationship. Not the funniest line — the most resonant one. That's what you'll build scenes from.</p>
+    <p><strong>What to listen for:</strong> real emotion, contradiction, a specific image, a surprising relationship. Not the funniest line — the most resonant one. That's your raw material for scenes.</p>
   </div>
 
   <hr>
@@ -305,15 +255,16 @@
       </div>
     </div>
     <div class="beat-body">
-      <p>Three separate two-person scenes launch from the opening. Each scene explores a different angle of the theme — different characters, different worlds, different games. They are <strong>not connected to each other yet</strong>. That happens later.</p>
-      <p>Your job in Beat 1 is simple: <em>find the first unusual thing</em> and start playing it. Establish who these people are, what their relationship is, and what the strange thing is. Don't rush to be funny. Let the game emerge from the reality.</p>
-      <p>The audience needs to understand the base reality before the game lands. A doctor's office is only funny when we believe it's a doctor's office first.</p>
+      <p>Three separate two-person scenes launch from the opening. Each explores a different angle of the theme — different characters, different worlds. They are <strong>not connected to each other yet</strong>. That happens later.</p>
+      <p>Your job: <em>find the first unusual thing</em> and start playing it. Establish who these people are, what their relationship is, and what is strange. Build to absurdity — earn it. Don't leap straight to weird. The audience needs to believe the base reality before the game lands.</p>
+      <p>Beat 1 is the calmest, most grounded beat. Longer than the others. Take your time. Strong characters here mean you have something worth calling back in Beat 2 and 3.</p>
       <div class="beat-pills">
         <span class="pill do">Find the first unusual thing</span>
         <span class="pill do">Establish base reality first</span>
-        <span class="pill do">Commit to your characters</span>
+        <span class="pill do">Build strong characters</span>
         <span class="pill dont">Don't rush to weird</span>
         <span class="pill dont">Don't play multiple games</span>
+        <span class="pill dont">Don't tag out in Beat 1</span>
       </div>
     </div>
   </div>
@@ -328,8 +279,8 @@
       </div>
     </div>
     <div class="beat-body">
-      <p>After the three Beat 1 scenes, the full ensemble comes together for a group game. This is <strong>not a scene</strong> — it's a shared exploration of the Harold's theme, often more physical, abstract, or musical than a regular scene.</p>
-      <p>Group games let the ensemble breathe together, find the emotional centre of the show, and signal to the audience: <em>this is what this Harold is really about</em>. Heighten quickly — group games don't get second beats, so build fast and commit fully.</p>
+      <p>After Beat 1, the full ensemble comes together for a group game. This is <strong>not a scene</strong> — it's a shared, often physical or abstract exploration of the Harold's theme. Heighten quickly — group games don't get second beats, so build fast and commit fully.</p>
+      <p>This is the ensemble breathing together. The best group games make the audience feel the emotional centre of the show without spelling it out.</p>
       <div class="beat-pills">
         <span class="pill do">Build fast — no second beat</span>
         <span class="pill do">Match and then lead</span>
@@ -345,123 +296,224 @@
       <div class="beat-number">2</div>
       <div class="beat-title-block">
         <div class="beat-title">Beat 2 — Heighten</div>
-        <div class="beat-tagline">Same characters · Same game · More so</div>
+        <div class="beat-tagline">Same game · Raised stakes · Shorter scenes</div>
       </div>
     </div>
     <div class="beat-body">
-      <p>The three scenes return — same characters from Beat 1, but in a new situation. The game from Beat 1 is still the game. Your only job is to make it <em>more</em>. The unusual thing is now undeniable. The stakes are higher. The logic is more twisted.</p>
-      <p>Ask yourself: <strong>"If this was true in Beat 1, what's MORE true now?"</strong> Don't reset and don't introduce a new game. You are deepening what already exists, not starting over. The audience has been tracking these characters — reward that investment.</p>
-      <p>A common mistake: playing Beat 2 like Beat 1, just louder. That's not heightening — that's repeating. Something must actually shift. The game escalates; the consequence is real; the character is further committed to their warped worldview.</p>
+      <p>Beat 2 returns to the games from Beat 1 — but <em>not necessarily the same characters or setting</em>. The game is heightened: the unusual thing is now more extreme, the stakes are higher, the consequences are real.</p>
+      <p>Beat 2 scenes are typically shorter than Beat 1. Much of the groundwork is already done — now you just need to escalate. Ask: <strong>"If this was true in Beat 1, what's MORE true now?"</strong></p>
+      <p>A common mistake is playing Beat 2 like Beat 1, just louder. That's repeating, not heightening. Something must actually shift. The game escalates. The consequence lands. The character is further committed to their warped worldview.</p>
       <div class="beat-pills">
-        <span class="pill do">Same game, escalated</span>
+        <span class="pill do">Escalate the game</span>
         <span class="pill do">Let consequences land</span>
         <span class="pill do">Follow the twisted logic</span>
         <span class="pill dont">Don't introduce new games</span>
-        <span class="pill dont">Don't reset the scene</span>
         <span class="pill dont">Don't just repeat Beat 1 louder</span>
+        <span class="pill dont">Don't focus on plot</span>
       </div>
     </div>
   </div>
 
-  <!-- Group Game 2 -->
-  <div class="beat-block">
-    <div class="beat-header">
-      <div class="beat-number" style="color:var(--green)">G</div>
-      <div class="beat-title-block">
-        <div class="beat-title" style="color:var(--green)">Group Game — Raise the Stakes</div>
-        <div class="beat-tagline">Push further · More committed · Edge of control</div>
-      </div>
+  <!-- BEGINNER SECTION -->
+  <h2>Wait — What Actually Is Beat 2? (Plain Language)</h2>
+
+  <div class="beginner-box">
+    <div class="beginner-label">🟢 Beginner Reality Check</div>
+    <p><strong>Beat 2 is NOT "the same scene, continued."</strong></p>
+    <p>This is the mistake almost every beginner makes — including your whole class last time. You had two people in a scene. They had a funny dynamic. Beat 2 comes around and... you put the same two people back on stage, pick up roughly where you left off, and make it a bit weirder.</p>
+    <p>That feels right. It isn't.</p>
+    <p><strong>What you're missing: the game.</strong> The game is not the characters. It's not the situation. It's the <em>weird pattern underneath</em>. Two scenes can have totally different characters and settings and still be the same game — that's the point.</p>
+    <p>Think of it like a song cover. Different artist, different arrangement — but you recognise the melody. The melody is the game. Beat 2 is the cover version.</p>
+  </div>
+
+  <!-- The classic mistake -->
+  <h2>The Mistake Your Class Made — And How To Fix It</h2>
+
+  <div class="mistake-vs">
+    <div class="mistake-bad">
+      <div class="m-label">❌ What happened (most beginners)</div>
+      <p><strong>Beat 1:</strong> Two friends at a café. One keeps giving unsolicited life advice. The other gets increasingly annoyed. It's funny. You find the game.</p>
+      <p><strong>Beat 2:</strong> Same two people. Still at the café (or somewhere nearby). Still giving advice. Maybe now it's about something bigger. A bit weirder. More dialogue.</p>
+      <p>The audience thinks: <em>"Oh right, these two again."</em> But the game hasn't moved. It's just... more of the same scene.</p>
+      <p><strong>No one was mapping.</strong> Nobody on the back wall asked: "What is the actual game here?" So Beat 2 had nothing to build from.</p>
     </div>
-    <div class="beat-body">
-      <p>The second group game goes further than the first. The ensemble now understands the Harold's emotional core and the group game should reflect that — more committed, more specific, closer to the edge.</p>
-      <p>This is the last moment of shared breath before the Harold collapses inward. Use it to set the emotional temperature for Beat 3.</p>
+    <div class="mistake-good">
+      <div class="m-label">✅ What should happen</div>
+      <p><strong>Beat 1:</strong> Same scene. One friend gives unsolicited life advice. Game identified from back wall: <em>"Person who thinks they know better than everyone, even when it's not asked for."</em></p>
+      <p><strong>Beat 2 (Time Dash):</strong> Same character — now at a hospital, giving unsolicited surgical advice to a doctor mid-operation. Higher stakes. Same game. Still totally unqualified and totally certain.</p>
+      <p><strong>OR Beat 2 (Analogous):</strong> New characters entirely — a co-pilot giving unsolicited landing advice to a senior pilot. Same game (unwanted certainty), new world, new performers.</p>
+      <p>The audience thinks: <em>"Oh! That's the same thing — but bigger."</em> That's the laugh.</p>
     </div>
   </div>
 
-  <!-- Beat 3 -->
-  <div class="beat-block">
-    <div class="beat-header">
-      <div class="beat-number">3</div>
-      <div class="beat-title-block">
-        <div class="beat-title">Beat 3 — Converge & Pay Off</div>
-        <div class="beat-tagline">Worlds collide · Call-backs · Shorter scenes</div>
-      </div>
+  <div class="beginner-box">
+    <div class="beginner-label">🟢 The one question to ask yourself from the back wall</div>
+    <p>While watching a Beat 1 scene, don't track the plot. Ask yourself:</p>
+    <p><strong>"What kind of person is this? What do they always do?"</strong></p>
+    <p>Not: "they argued about coffee" — but: <em>"person who can't admit they're wrong."</em></p>
+    <p>Not: "they were at work" — but: <em>"person who treats every tiny thing like a life-or-death crisis."</em></p>
+    <p>That label is your game. Write it in your head. That's all mapping is. When Beat 2 comes, you ask: <strong>"Where else does this kind of person show up — but in a bigger, higher-stakes version of the same situation?"</strong> That's your initiation.</p>
+  </div>
+
+  <!-- The three types of Beat 2 -->
+  <h2>The Three Types of Beat 2</h2>
+  <p class="body">When you initiate a Beat 2 scene, you have three options. All three are valid — what matters is that you're serving the <em>game</em>, not the plot.</p>
+
+  <div class="beat2-types">
+    <div class="type-card time">
+      <h3>Time Dash</h3>
+      <p>Take the same character(s) from Beat 1 and see them in a new situation — usually further forward in time. The character's game continues, just in a higher-stakes context.</p>
+      <div class="example">Beat 1: A hostess gets promoted to head chef despite having no cooking skills.<br><br>Time Dash Beat 2: Same hostess — now she's been put in charge of a Michelin-star kitchen. Same game (wildly unqualified person refusing to admit it), higher stakes.</div>
     </div>
-    <div class="beat-body">
-      <p>Beat 3 is where the Harold starts to fold in on itself. Scenes are shorter. Characters from different storylines can meet. A line from Scene A might echo in Scene C. Call-backs land here — the audience has been tracking everything and now gets rewarded.</p>
-      <p>You don't need to <em>force</em> convergence. If you've mapped well and played the games honestly, it happens naturally. The themes were always connected — Beat 3 just makes that visible.</p>
-      <p><strong>Tag-outs and edits</strong> are powerful here. Use them to cross the streams — bring a character into another scene's world and watch the games collide.</p>
-      <div class="beat-pills">
-        <span class="pill do">Trust the map — don't force it</span>
-        <span class="pill do">Use call-backs</span>
-        <span class="pill do">Let scenes be short</span>
-        <span class="pill do">Cross the worlds</span>
-        <span class="pill dont">Don't start new games</span>
-        <span class="pill dont">Don't over-explain connections</span>
+    <div class="type-card analogous">
+      <h3>Analogous</h3>
+      <p>Strip away the specifics of Beat 1 and find the core game. Then play that game in a completely new world, with new characters. Often done by different performers than Beat 1.</p>
+      <div class="example">Beat 1: Overbearing parent micromanages child at piano recital.<br><br>Analogous Beat 2: Overbearing pilot micromanages co-pilot while landing a plane. Same game (control freak + higher stakes situation), totally new people and world.</div>
+    </div>
+    <div class="type-card tangential">
+      <h3>Tangential</h3>
+      <p>A loosely connected idea sparked by Beat 1 — same theme, but explores a different angle. Often saved for Beat 3. Good for when you flagged something interesting but didn't have room to play it.</p>
+      <div class="example">Beat 1: Two siblings competing for their parent's approval.<br><br>Tangential Beat 3: Two employees competing for praise from a boss who doesn't notice either of them. Same emotional theme — being unseen — different world entirely.</div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <p><strong>Mapping tip for Beat 2:</strong> While watching Beat 1 from the back wall, ask yourself: <em>"What is the game here, stripped of the details?"</em> Label it in your own words — not "hostess who can't cook" but "person in way over their head who won't admit it." That label is what you carry into Beat 2. That's your initiation.</p>
+  </div>
+
+  <hr>
+
+  <!-- Full worked example -->
+  <h2>Worked Example — Full Harold Trace</h2>
+  <p class="body">Suggestion: <strong>"Vacation"</strong>. Follow Scene A through the whole Harold to see how mapping and beating work in practice.</p>
+
+  <div class="example-block">
+    <div class="example-header">
+      <h3>Scene A — Traced Through All Three Beats</h3>
+      <p>SUGGESTION: VACATION · THEME THAT EMERGED: Escape from responsibility</p>
+    </div>
+    <div class="example-body">
+
+      <div class="ex-row">
+        <div class="ex-label opening">
+          <div class="ex-label-title">Opening</div>
+          <div class="ex-label-sub">What you mine</div>
+        </div>
+        <div class="ex-content">
+          <div class="scene-title">Group opening on "Vacation"</div>
+          <div class="scene-desc">The ensemble free-associates: sunburn, leaving your phone at home, a dad who can't stop checking email, lying on a beach pretending to be fine, a kid who just wants to go home.</div>
+          <div class="note good">→ You notice: the dad checking email feels loaded. Someone in the ensemble physically can't stop moving even when lying still. That's your raw material — <strong>people who can't let go of control even when they're supposed to.</strong></div>
+        </div>
       </div>
+
+      <div class="ex-row">
+        <div class="ex-label b1">
+          <div class="ex-label-title">Beat 1</div>
+          <div class="ex-label-sub">Establish</div>
+        </div>
+        <div class="ex-content">
+          <div class="scene-title">Scene A1 — The Hotel Room</div>
+          <div class="game-tag">Game: Person on holiday who can't stop working</div>
+          <div class="scene-desc">Two colleagues are on a company retreat in Mallorca. One (A) is lying by the pool reading a novel. The other (B) has their laptop out, is on a conference call, and keeps insisting everything is fine — they're "totally relaxed, this is just a quick check-in."</div>
+          <div class="scene-desc">The first unusual thing: B is visibly stressed and working, but insisting they're on holiday. A starts pointing this out. The game emerges: B keeps finding increasingly absurd reasons why what they're doing "doesn't count" as work.</div>
+          <div class="note good">→ From the back wall you note: <strong>Game = person who redefines reality to avoid admitting they can't let go. The twisted logic is the game.</strong></div>
+        </div>
+      </div>
+
+      <div class="ex-row">
+        <div class="ex-label map">
+          <div class="ex-label-title">Mapping</div>
+          <div class="ex-label-sub">Back wall</div>
+        </div>
+        <div class="ex-content">
+          <div class="scene-title">What you're tracking from the back wall</div>
+          <div class="scene-desc">Scene A: <em>Can't stop working / redefines reality</em><br>Scene B: <em>Family pretending to have fun / performing happiness</em><br>Scene C: <em>Tour guide making everything sound fine when it isn't</em></div>
+          <div class="note good">→ You see the theme: <strong>people pretending to be OK when they're not.</strong> That's what rhymes across A, B, and C. Now you know what Beat 3 convergence looks like.</div>
+        </div>
+      </div>
+
+      <div class="ex-row">
+        <div class="ex-label b2">
+          <div class="ex-label-title">Beat 2</div>
+          <div class="ex-label-sub">Heighten</div>
+        </div>
+        <div class="ex-content">
+          <div class="scene-title">Option 1: Time Dash — Same characters, new situation</div>
+          <div class="game-tag">Same game, higher stakes</div>
+          <div class="scene-desc">Same B, now at their own wedding. They're the one getting married. But there's a work crisis and they keep sneaking off to take calls, insisting "this is fine, I'm present, this is just logistics." Same character, same twisted logic, now applied to the most personal moment of their life.</div>
+
+          <div class="scene-title" style="margin-top:14px;">Option 2: Analogous — New characters, same game</div>
+          <div class="scene-desc">A surgeon in the operating theatre who insists this counts as their "me time." Different person entirely — but the game (redefining reality to avoid admitting they can't let go) is identical. Higher stakes: they're operating on someone.</div>
+
+          <div class="note good">→ Both are valid. Time dash keeps the character. Analogous raises stakes faster. Pick what serves the Harold.</div>
+          <div class="note bad">→ Common mistake: playing the same scene again with slightly more stress. That's repeating, not heightening. The <em>game</em> must escalate, not just the volume.</div>
+        </div>
+      </div>
+
+      <div class="ex-row">
+        <div class="ex-label b3">
+          <div class="ex-label-title">Beat 3</div>
+          <div class="ex-label-sub">Converge</div>
+        </div>
+        <div class="ex-content">
+          <div class="scene-title">Worlds collide</div>
+          <div class="scene-desc">The workaholic from Scene A ends up on the same tour from Scene C — still on a call, still insisting they're "100% present." The tour guide (who was also pretending everything was fine) starts narrating the workaholic's breakdown as part of the tour. The family from Scene B wanders past, also visibly not fine, waving and smiling.</div>
+          <div class="scene-desc">All three games — redefining reality, performing happiness, narrating denial — collide in one scene. The audience has been tracking all of it. The payoff feels earned.</div>
+          <div class="note good">→ You didn't plan this. You <strong>mapped</strong> it. Because you labelled each scene's game from the back wall, you knew which worlds rhymed. Beat 3 just made the connections visible.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <hr>
 
   <!-- Mapping -->
-  <h2>Mapping — How to Track It All</h2>
-  <p class="body"><strong>Mapping</strong> is what you do from the back wall while you're not in a scene. You're actively tracking every scene's game, characters, and emotional theme — building a mental web so you know when and how to re-enter, call-back, or converge.</p>
-  <p class="body">Think of yourself as both a performer and an editor. The editor in you watches the whole Harold and spots the connections. The performer in you acts on them.</p>
+  <h2>Mapping — Active Listening with Intent</h2>
+  <p class="body">Mapping is what you do from the back wall while you're not in a scene. You're actively tracking every scene's game, characters, and emotional theme — building a mental web so you know when and how to re-enter, call-back, or converge in Beat 3.</p>
+  <p class="body">Think of yourself as both a performer and an editor. The editor in you watches the whole Harold and spots the connections. The performer acts on them at the right moment.</p>
 
   <div class="info-box">
-    <p><strong>Practical mapping habit:</strong> As each scene plays out, mentally label it by theme — not by plot. <em>"A is about needing to be seen. B is about faking competence. C is about loyalty."</em> Now you can see what rhymes. When B's character stumbles into C's world — that's your convergence.</p>
-    <p>Mapping isn't a system. It's <strong>active listening with intent</strong>. The better you map, the more inevitable your Beat 3 feels.</p>
+    <p><strong>The mapping habit:</strong> As each scene plays, label it by theme — not plot. Not "two people at a restaurant" but <em>"someone being responsible for something they broke."</em> Strip out the specifics. What's left is the game. That label is what you carry forward.</p>
+    <p><strong>When three scenes rhyme thematically, Beat 3 writes itself.</strong> You don't force convergence — you just know the doors that are open.</p>
   </div>
 
-  <!-- Mapping diagram -->
   <div class="map-diagram">
     <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" font-family="DM Mono, monospace">
       <rect x="220" y="10" width="240" height="44" rx="4" fill="#1a1a2e" stroke="#ffe066" stroke-width="1.5"/>
       <text x="340" y="28" fill="#ffe066" font-size="10" text-anchor="middle" letter-spacing="2">OPENING</text>
       <text x="340" y="44" fill="#ffe066" font-size="9" text-anchor="middle" opacity="0.7">theme · images · emotion</text>
-
       <line x1="280" y1="54" x2="100" y2="100" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
       <line x1="340" y1="54" x2="340" y2="100" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
       <line x1="400" y1="54" x2="580" y2="100" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
-
       <rect x="20" y="100" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5"/>
       <text x="100" y="121" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE A</text>
       <text x="100" y="138" fill="#b0ab9e" font-size="9" text-anchor="middle">game · chars · world</text>
-
       <rect x="260" y="100" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5"/>
       <text x="340" y="121" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE B</text>
       <text x="340" y="138" fill="#b0ab9e" font-size="9" text-anchor="middle">game · chars · world</text>
-
       <rect x="500" y="100" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5"/>
       <text x="580" y="121" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">SCENE C</text>
       <text x="580" y="138" fill="#b0ab9e" font-size="9" text-anchor="middle">game · chars · world</text>
-
-      <text x="340" y="96" fill="#555" font-size="9" text-anchor="middle" letter-spacing="3">BEAT 1 → BEAT 2 (same scenes, escalated)</text>
-
-      <line x1="100" y1="150" x2="100" y2="195" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
-      <line x1="340" y1="150" x2="340" y2="195" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
-      <line x1="580" y1="150" x2="580" y2="195" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
-
-      <rect x="60" y="162" width="560" height="24" rx="3" fill="#1a2e1a" stroke="#39ff80" stroke-width="1"/>
-      <text x="340" y="178" fill="#39ff80" font-size="9" text-anchor="middle" letter-spacing="3">GROUP GAMES — deepen & raise stakes</text>
-
+      <text x="340" y="96" fill="#555" font-size="9" text-anchor="middle" letter-spacing="2">BEAT 1 → label each game from the back wall</text>
+      <line x1="100" y1="150" x2="100" y2="192" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="340" y1="150" x2="340" y2="192" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+      <line x1="580" y1="150" x2="580" y2="192" stroke="#555" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="60" y="160" width="560" height="24" rx="3" fill="#1a2e1a" stroke="#39ff80" stroke-width="1"/>
+      <text x="340" y="176" fill="#39ff80" font-size="9" text-anchor="middle" letter-spacing="3">GROUP GAME — deepen & raise stakes</text>
       <rect x="20" y="195" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5" opacity="0.85"/>
       <text x="100" y="216" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">A — RAISED</text>
       <text x="100" y="233" fill="#b0ab9e" font-size="9" text-anchor="middle">same game, escalated</text>
-
       <rect x="260" y="195" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5" opacity="0.85"/>
       <text x="340" y="216" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">B — RAISED</text>
       <text x="340" y="233" fill="#b0ab9e" font-size="9" text-anchor="middle">same game, escalated</text>
-
       <rect x="500" y="195" width="160" height="50" rx="4" fill="#2e1a1a" stroke="#ff6b35" stroke-width="1.5" opacity="0.85"/>
       <text x="580" y="216" fill="#ff9060" font-size="9" text-anchor="middle" letter-spacing="2">C — RAISED</text>
       <text x="580" y="233" fill="#b0ab9e" font-size="9" text-anchor="middle">same game, escalated</text>
-
+      <text x="340" y="192" fill="#555" font-size="9" text-anchor="middle" letter-spacing="2">BEAT 2 → time dash / analogous / tangential</text>
       <line x1="100" y1="245" x2="270" y2="278" stroke="#a090ff" stroke-width="1.5" stroke-dasharray="4,3"/>
       <line x1="340" y1="245" x2="340" y2="278" stroke="#a090ff" stroke-width="1.5"/>
       <line x1="580" y1="245" x2="410" y2="278" stroke="#a090ff" stroke-width="1.5" stroke-dasharray="4,3"/>
-
       <rect x="180" y="278" width="320" height="18" rx="3" fill="#1a1a2e" stroke="#a090ff" stroke-width="1.5"/>
       <text x="340" y="291" fill="#a090ff" font-size="9" text-anchor="middle" letter-spacing="2">BEAT 3 — CONVERGE · CALL-BACKS · PAY OFF</text>
     </svg>
@@ -475,16 +527,52 @@
     <div class="trans-card">
       <span class="arrow">B1 → B2</span>
       <h3>Beat 1 to Beat 2</h3>
-      <p>Return to the same characters, shifted situation. The game is recognisable — just escalated one clear step.</p>
-      <p>Ask: <em>What does this game WANT to become?</em> Follow that logic.</p>
-      <div class="rule">Don't reset. Don't explain. Just more of the same unusual thing — clearer, weirder, higher stakes.</div>
+      <p>Strip the specifics. Label the game. Initiate Beat 2 from that label — not from the plot, not from "what happened next."</p>
+      <p>Ask: <em>What does this game WANT to become?</em> Time dash, analogous, or tangential — pick what serves the game.</p>
+      <div class="rule">Don't timedash with plot. Think "if this, then what" — not "what happened next."</div>
     </div>
     <div class="trans-card">
       <span class="arrow">B2 → B3</span>
       <h3>Beat 2 to Beat 3</h3>
-      <p>The Harold folds inward. Themes rhyme. Characters cross paths. A line from Scene A echoes in Scene C.</p>
-      <p>No need to force it — if you've mapped well, it happens naturally.</p>
+      <p>The Harold folds inward. Themes rhyme. Characters cross paths. Your mapped labels tell you which scenes connect.</p>
+      <p>Scenes are short now — 30 seconds each. Don't start new games. Just heighten and converge.</p>
       <div class="rule">Be a good editor. Know when a scene is done. Trust the map you built from the back wall.</div>
+    </div>
+  </div>
+
+  <!-- Group Game 2 and Beat 3 blocks -->
+  <div class="beat-block">
+    <div class="beat-header">
+      <div class="beat-number" style="color:var(--green)">G</div>
+      <div class="beat-title-block">
+        <div class="beat-title" style="color:var(--green)">Group Game 2 — Raise the Stakes</div>
+        <div class="beat-tagline">Push further · More committed · Edge of control</div>
+      </div>
+    </div>
+    <div class="beat-body">
+      <p>The second group game goes further than the first. The ensemble now understands the Harold's emotional core — the group game should reflect that. More committed, more specific, closer to the edge. This sets the temperature for Beat 3.</p>
+    </div>
+  </div>
+
+  <div class="beat-block">
+    <div class="beat-header">
+      <div class="beat-number">3</div>
+      <div class="beat-title-block">
+        <div class="beat-title">Beat 3 — Converge & Pay Off</div>
+        <div class="beat-tagline">Worlds collide · Call-backs · Very short scenes</div>
+      </div>
+    </div>
+    <div class="beat-body">
+      <p>Beat 3 is where the Harold folds in on itself. Scenes are very short — 30 seconds or less each. Characters from different storylines meet. Games collide. Call-backs land here — the audience has been tracking everything and now gets rewarded for it.</p>
+      <p>You don't need to <strong>force</strong> convergence. If you've mapped well and played the games honestly, it happens naturally. The themes were always connected — Beat 3 just makes that visible.</p>
+      <div class="beat-pills">
+        <span class="pill do">Trust the map — don't force it</span>
+        <span class="pill do">Use call-backs</span>
+        <span class="pill do">Keep scenes very short</span>
+        <span class="pill do">Cross the worlds</span>
+        <span class="pill dont">Don't start new games</span>
+        <span class="pill dont">Don't over-explain connections</span>
+      </div>
     </div>
   </div>
 
@@ -495,7 +583,6 @@
   <h2>Glossary</h2>
   <p style="font-size:11px;color:#555;margin-bottom:20px;letter-spacing:1px;">Cards marked <span style="color:var(--highlight);border:1px solid #554400;background:#1a1400;padding:1px 6px;border-radius:2px;font-size:9px;">CLASS TERM</span> may be specific to your teacher or school.</p>
   <div class="grid">
-
     <div class="card"><h3>Game of the Scene</h3><p>The unusual thing that happens + a pattern of making it more and more itself. Find it, name it internally, then heighten it.</p></div>
     <div class="card"><h3>Half Game</h3><p>When only ONE person is playing the game while the other plays it straight. Often funnier than both being weird.</p></div>
     <div class="card"><h3>Character Game</h3><p>Game driven by who the person IS — attitude, worldview, want. The character's logic IS the game.</p></div>
@@ -506,6 +593,8 @@
     <div class="card"><h3>Tag-out</h3><p>Someone runs in, taps a player out, takes their place — shifting time, location, or relationship to explore the game further.</p></div>
     <div class="card"><h3>Call-back</h3><p>Revisiting a character, phrase, or idea from earlier in the Harold. The audience remembers. Make it pay off.</p></div>
     <div class="card"><h3>Mapping</h3><p>Tracking each scene's game, characters, and theme from the back wall so you know when and how to re-enter, call-back, or converge.</p></div>
+    <div class="card"><h3>Time Dash</h3><p>A type of Beat 2 where you take the same character(s) forward in time to a new, higher-stakes situation. The character's game continues — the context escalates.</p></div>
+    <div class="card"><h3>Analogous Beat</h3><p>A type of Beat 2 where you strip the specifics and replay the same game with entirely new characters and world. Often played by different performers.</p></div>
     <div class="card"><h3>Object Work</h3><p>Physically committing to props/space that aren't there. Grounds scenes in reality and feeds character.</p></div>
     <div class="card"><h3>First Unusual Thing</h3><p>The moment something odd appears. Stop. Name it. That's probably your game. Build from there.</p></div>
     <div class="card"><h3>If This Is True, What Else Is True?</h3><p>The core UCB question for playing the game. Once you find the unusual thing, use this to explore its logic and heighten it beat by beat.</p></div>
@@ -517,9 +606,8 @@
     <div class="card"><div class="badge">Class Term</div><h3>Game Battle</h3><p>When two players are each pulling toward different games in the same scene. A note to agree on one game and play it together.</p></div>
     <div class="card"><div class="badge">Class Term</div><h3>Living Room</h3><p>A grounded, domestic-feeling scene used to establish base reality before the game emerges. Also a longform format inspired by the Harold.</p></div>
     <div class="card"><div class="badge">Class Term</div><h3>Riders Room</h3><p>The offstage space where the ensemble watches, maps, and waits. Staying sharp in the riders room means actively tracking everything happening onstage.</p></div>
-    <div class="card"><h3>Cut To</h3><p>An edit jumping the scene forward or backward in time — e.g. "cut to: one year later." Used to explore the game in a different moment without losing the thread.</p></div>
+    <div class="card"><h3>Cut To</h3><p>An edit jumping the scene forward or backward in time. Used to explore the game in a different moment without losing the thread.</p></div>
     <div class="card"><div class="badge">Class Term</div><h3>Workshop an Idea</h3><p>In rehearsal: pausing to explore a moment together before continuing. A tool to find what a game could become. Never done in performance.</p></div>
-
   </div>
 </div>
 
@@ -536,6 +624,7 @@
         <li>Be specific — "my Ford Fiesta" not "my car"</li>
         <li>React truthfully before being clever</li>
         <li>Map scenes from the back wall actively</li>
+        <li>Label each scene's game in your head (not plot)</li>
         <li>Use the monologue — mine it for real themes</li>
         <li>Trust your scene partner's choices</li>
         <li>Let silence breathe</li>
@@ -558,12 +647,13 @@
         <li>Play multiple games at once — game battle</li>
         <li>Make your partner wrong</li>
         <li>Switch off when watching from the back</li>
-        <li>Drift — keep the game consistent in tone</li>
-        <li>Be random instead of unusual</li>
+        <li>Time dash with plot — think "if this, then what"</li>
+        <li>Play Beat 2 like Beat 1 just louder</li>
         <li>Force convergence in Beat 3 — trust the map</li>
         <li>Run away from the weird thing</li>
         <li>Half-commit to an analogy — go all the way</li>
         <li>Resolve tension too early for comfort</li>
+        <li>Tag out in Beat 1 — you don't know the game yet</li>
       </ul>
     </div>
   </div>
@@ -579,13 +669,14 @@
     <div class="tip"><strong>Commit to emotion</strong>Characters with strong feelings create friction and game naturally. Don't be neutral.</div>
     <div class="tip"><strong>Match, then lead</strong>In group games: mirror what others set up, then add one thing. Don't overpower, don't just copy.</div>
     <div class="tip"><strong>Rule of threes</strong>Game needs ~3 beats to land. Establish → Confirm → Audience expects it → subvert or pay off.</div>
-    <div class="tip"><strong>Map actively</strong>While watching: label each scene by theme. "A=control, B=belonging, C=visibility." That's your convergence roadmap.</div>
+    <div class="tip"><strong>Map actively</strong>While watching: label each scene by theme, not plot. "A = can't let go of control." That label is your Beat 2 initiation.</div>
+    <div class="tip"><strong>Beat 2 question</strong>Strip the specifics. What is the game underneath? Time dash or analogous — both serve the game, not the story.</div>
     <div class="tip"><strong>Tag-outs are gifts</strong>Tag out to explore a different angle of the same game — not to fix or escape.</div>
     <div class="tip"><strong>Monologue mining</strong>Listen for real emotion, odd detail, contradiction — not the funny line. That's your material.</div>
     <div class="tip"><strong>Voice of reason trick</strong>When everything is crazy, being completely normal IS the comedy. Underreact.</div>
-    <div class="tip"><strong>Beat 2 question</strong>Ask yourself: "What does this game want to become?" Follow that. Don't reinvent.</div>
     <div class="tip"><strong>Twisted logic</strong>Stay inside your character's warped worldview. The more consistent the logic, the funnier the behaviour.</div>
     <div class="tip"><strong>Hold the tension</strong>Don't let characters off the hook too soon. Comedic tension is a rubber band — stretch it before you snap it.</div>
+    <div class="tip"><strong>Beat 3 is short</strong>30 seconds per scene. Don't start new games. Just heighten, converge, pay off. Trust what you built.</div>
     <div class="tip"><strong>Your edge</strong>You read rooms well — trust that. Your facilitation instinct for when a group needs energy vs. space? That's gold in ensemble improv.</div>
   </div>
 </div>
