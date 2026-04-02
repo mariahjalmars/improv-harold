@@ -124,6 +124,13 @@
   .type-card p { font-size: 13px; line-height: 1.65; color: #b0ab9e; margin-bottom: 8px; }
   .type-card .example { font-size: 11px; color: #666; border-left: 2px solid #2a2a2a; padding-left: 10px; line-height: 1.6; margin-top: 8px; }
 
+  /* Sub-nav inside Harold tab */
+  .subnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 16px; background: var(--card); border: 1px solid var(--muted); border-radius: 4px; }
+  .subnav a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #888; text-decoration: none; padding: 6px 14px; border: 1px solid var(--muted); border-radius: 2px; transition: all 0.15s; white-space: nowrap; }
+  .subnav a:hover { color: var(--fg); border-color: #666; }
+  .subnav a.accent { color: var(--accent); border-color: var(--accent); }
+  .subnav a.yellow { color: var(--highlight); border-color: #554400; background: #1a1400; }
+
   /* Beginner box */
   .beginner-box { background: #0f1a0f; border: 2px solid var(--green); border-radius: 6px; padding: 24px; margin: 20px 0; }
   .beginner-box .beginner-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
@@ -198,7 +205,19 @@
 <!-- THE HAROLD -->
 <div class="section active" id="harold">
 
-  <h2>What is the Harold?</h2>
+  <div class="subnav">
+    <a href="#h-what">What is it?</a>
+    <a href="#h-opening">The Opening</a>
+    <a href="#h-beat1">Beat 1</a>
+    <a href="#h-beat2">Beat 2</a>
+    <a href="#h-beginner" class="yellow">Beginner Guide</a>
+    <a href="#h-beat2types">Beat 2 Types</a>
+    <a href="#h-example">Full Example</a>
+    <a href="#h-mapping">Mapping</a>
+    <a href="#h-beat3">Beat 3</a>
+  </div>
+
+  <h2 id="h-what">What is the Harold?</h2>
   <p class="body">The Harold is a long-form improv structure — roughly 25–30 minutes — performed by an ensemble of 6–9 people. It starts with a single suggestion from the audience, which gets explored through three beats of scenes and two group games. By the end, all the threads connect.</p>
   <p class="body">The Harold is not about plot or story. It's about <strong>finding a game</strong> — the unusual thing that makes a scene funny — and then heightening it across three beats while the whole ensemble weaves everything together.</p>
 
@@ -236,7 +255,7 @@
   <hr>
 
   <!-- Opening -->
-  <h2>The Opening</h2>
+  <h2 id="h-opening">The Opening</h2>
   <p class="body">The Harold begins with a suggestion — one word from the audience. The ensemble does a <strong>group opening</strong>: a shared, often abstract exploration of that suggestion. The goal is not to be funny — it's to generate <em>raw material</em>: themes, images, emotions, relationships that can feed the scenes to come.</p>
   <p class="body">Think of the opening like tuning an instrument together before a concert. You're agreeing on the key without spelling it out. The best openings feel like one mind thinking, not six people performing.</p>
   <div class="info-box">
@@ -246,7 +265,7 @@
   <hr>
 
   <!-- Beat 1 -->
-  <div class="beat-block">
+  <div class="beat-block" id="h-beat1">
     <div class="beat-header">
       <div class="beat-number">1</div>
       <div class="beat-title-block">
@@ -291,7 +310,7 @@
   </div>
 
   <!-- Beat 2 -->
-  <div class="beat-block">
+  <div class="beat-block" id="h-beat2">
     <div class="beat-header">
       <div class="beat-number">2</div>
       <div class="beat-title-block">
@@ -315,27 +334,27 @@
   </div>
 
   <!-- BEGINNER SECTION -->
-  <h2>Wait — What Actually Is Beat 2? (Plain Language)</h2>
+  <h2 id="h-beginner">Wait — What Actually Is Beat 2? (Plain Language)</h2>
 
   <div class="beginner-box">
     <div class="beginner-label">🟢 Beginner Reality Check</div>
     <p><strong>Beat 2 is NOT "the same scene, continued."</strong></p>
-    <p>This is the mistake almost every beginner makes — including your whole class last time. You had two people in a scene. They had a funny dynamic. Beat 2 comes around and... you put the same two people back on stage, pick up roughly where you left off, and make it a bit weirder.</p>
+    <p>This is one of the most common mistakes beginners make in improv — and completely normal at this stage. You had two people in a scene with a funny dynamic. Beat 2 comes around and you put the same two people back on stage, pick up roughly where you left off, and make it a bit weirder.</p>
     <p>That feels right. It isn't.</p>
-    <p><strong>What you're missing: the game.</strong> The game is not the characters. It's not the situation. It's the <em>weird pattern underneath</em>. Two scenes can have totally different characters and settings and still be the same game — that's the point.</p>
+    <p><strong>What's missing: the game.</strong> The game is not the characters. It's not the situation. It's the <em>weird pattern underneath</em>. Two scenes can have totally different characters and settings and still be the same game — that's the whole point.</p>
     <p>Think of it like a song cover. Different artist, different arrangement — but you recognise the melody. The melody is the game. Beat 2 is the cover version.</p>
   </div>
 
   <!-- The classic mistake -->
-  <h2>The Mistake Your Class Made — And How To Fix It</h2>
+  <h2>The Classic Beginner Mistake — And How To Fix It</h2>
 
   <div class="mistake-vs">
     <div class="mistake-bad">
-      <div class="m-label">❌ What happened (most beginners)</div>
+      <div class="m-label">❌ What most beginners do</div>
       <p><strong>Beat 1:</strong> Two friends at a café. One keeps giving unsolicited life advice. The other gets increasingly annoyed. It's funny. You find the game.</p>
       <p><strong>Beat 2:</strong> Same two people. Still at the café (or somewhere nearby). Still giving advice. Maybe now it's about something bigger. A bit weirder. More dialogue.</p>
-      <p>The audience thinks: <em>"Oh right, these two again."</em> But the game hasn't moved. It's just... more of the same scene.</p>
-      <p><strong>No one was mapping.</strong> Nobody on the back wall asked: "What is the actual game here?" So Beat 2 had nothing to build from.</p>
+      <p>The audience thinks: <em>"Oh right, these two again."</em> But the game hasn't moved. It's just more of the same scene.</p>
+      <p><strong>Why it happens:</strong> nobody on the back wall asked "what is the actual game here?" so Beat 2 had nothing to build from. This is a mapping problem, not a performance problem.</p>
     </div>
     <div class="mistake-good">
       <div class="m-label">✅ What should happen</div>
@@ -352,11 +371,11 @@
     <p><strong>"What kind of person is this? What do they always do?"</strong></p>
     <p>Not: "they argued about coffee" — but: <em>"person who can't admit they're wrong."</em></p>
     <p>Not: "they were at work" — but: <em>"person who treats every tiny thing like a life-or-death crisis."</em></p>
-    <p>That label is your game. Write it in your head. That's all mapping is. When Beat 2 comes, you ask: <strong>"Where else does this kind of person show up — but in a bigger, higher-stakes version of the same situation?"</strong> That's your initiation.</p>
+    <p>That label is your game. Write it in your head. That's all mapping is. When Beat 2 comes, ask: <strong>"Where else does this kind of person show up — but in a bigger, higher-stakes version?"</strong> That's your initiation.</p>
   </div>
 
   <!-- The three types of Beat 2 -->
-  <h2>The Three Types of Beat 2</h2>
+  <h2 id="h-beat2types">The Three Types of Beat 2</h2>
   <p class="body">When you initiate a Beat 2 scene, you have three options. All three are valid — what matters is that you're serving the <em>game</em>, not the plot.</p>
 
   <div class="beat2-types">
@@ -384,7 +403,7 @@
   <hr>
 
   <!-- Full worked example -->
-  <h2>Worked Example — Full Harold Trace</h2>
+  <h2 id="h-example">Worked Example — Full Harold Trace</h2>
   <p class="body">Suggestion: <strong>"Vacation"</strong>. Follow Scene A through the whole Harold to see how mapping and beating work in practice.</p>
 
   <div class="example-block">
@@ -469,7 +488,7 @@
   <hr>
 
   <!-- Mapping -->
-  <h2>Mapping — Active Listening with Intent</h2>
+  <h2 id="h-mapping">Mapping — Active Listening with Intent</h2>
   <p class="body">Mapping is what you do from the back wall while you're not in a scene. You're actively tracking every scene's game, characters, and emotional theme — building a mental web so you know when and how to re-enter, call-back, or converge in Beat 3.</p>
   <p class="body">Think of yourself as both a performer and an editor. The editor in you watches the whole Harold and spots the connections. The performer acts on them at the right moment.</p>
 
@@ -554,7 +573,7 @@
     </div>
   </div>
 
-  <div class="beat-block">
+  <div class="beat-block" id="h-beat3">
     <div class="beat-header">
       <div class="beat-number">3</div>
       <div class="beat-title-block">
