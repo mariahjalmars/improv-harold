@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Harold — UCB Improv Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --fg: #f0ece0;
+    --accent: #ff4d00;
+    --muted: #3a3a3a;
+    --highlight: #ffe066;
+    --green: #39ff80;
+    --card: #181818;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+
+  header {
+    padding: 48px 32px 32px;
+    border-bottom: 2px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: 'HAROLD';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 180px;
+    color: var(--muted);
+    opacity: 0.18;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 8vw, 88px);
+    letter-spacing: 2px;
+    color: var(--fg);
+    line-height: 1;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    margin-top: 8px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--highlight);
+    opacity: 0.9;
+  }
+
+  /* Nav tabs */
+  nav {
+    display: flex;
+    gap: 0;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--muted);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar { display: none; }
+
+  .tab {
+    padding: 14px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #888;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .tab:hover { color: var(--fg); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* Sections */
+  .section { display: none; padding: 32px; max-width: 960px; }
+  .section.active { display: block; }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: var(--fg);
+  }
+
+  h3 {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  /* Cards grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 28px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--muted);
+    border-radius: 4px;
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card h3 { margin-bottom: 6px; }
+  .card p { font-size: 13px; line-height: 1.65; color: #b0ab9e; }
+
+  /* Do/Don't split */
+  .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+  @media (max-width: 600px) { .dodont { grid-template-columns: 1fr; } }
+
+  .do-col, .dont-col { background: var(--card); border-radius: 4px; padding: 20px; }
+  .do-col { border-left: 3px solid var(--green); }
+  .dont-col { border-left: 3px solid var(--accent); }
+
+  .do-col h3 { color: var(--green); }
+  .dont-col h3 { color: var(--accent); }
+
+  ul { list-style: none; padding: 0; }
+  ul li { font-size: 13px; line-height: 1.7; color: #b0ab9e; padding-left: 16px; position: relative; }
+  ul li::before { content: '—'; position: absolute; left: 0; color: #555; }
+
+  /* Harold map */
+  .harold-map {
+    background: var(--card);
+    border: 1px solid var(--muted);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  .beat-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+  }
+
+  .beat-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .beat-cell {
+    background: var(--muted);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-size: 12px;
+    text-align: center;
+    color: #ccc;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .beat-cell.opening { background: #1a1a2e; border-color: #ffe066; color: var(--highlight); font-size: 11px; }
+  .beat-cell.group { background: #1a2e1a; border-color: var(--green); color: var(--green); }
+  .beat-cell.scene { background: #2e1a1a; border-color: #ff6b35; color: #ff9060; }
+  .beat-cell.game { background: #1a1a2e; border-color: #7b68ee; color: #a090ff; }
+  .beat-cell.tag { background: #2e2a1a; border-color: #ffd700; color: #ffd700; }
+  .beat-cell.span2 { grid-column: span 2; }
+  .beat-cell.span3 { grid-column: span 3; }
+
+  /* Tips pills */
+  .tips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+  .tip {
+    background: var(--card);
+    border: 1px solid var(--muted);
+    border-radius: 2px;
+    padding: 10px 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #b0ab9e;
+    max-width: 300px;
+  }
+  .tip strong { color: var(--highlight); display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+
+  .tag { display: inline-block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: var(--accent); color: #000; padding: 2px 8px; border-radius: 2px; margin-bottom: 12px; }
+
+  .divider { border: none; border-top: 1px solid var(--muted); margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>The <span>Harold</span></h1>
+  <div class="subtitle">UCB Improv · Quick Reference · Maja's Edition</div>
+</header>
+
+<nav>
+  <button class="tab active" onclick="show('structure')">Structure</button>
+  <button class="tab" onclick="show('glossary')">Glossary</button>
+  <button class="tab" onclick="show('dodont')">Do's & Don'ts</button>
+  <button class="tab" onclick="show('tips')">Tips & Tricks</button>
+</nav>
+
+<!-- STRUCTURE -->
+<div class="section active" id="structure">
+  <h2>Harold Structure</h2>
+
+  <div class="harold-map">
+    <div class="beat-row">
+      <div class="beat-label">Opening</div>
+      <div class="beat-cell opening span3">Group Game / Monologue-based opening<br><small>Find the themes. Mine for gold.</small></div>
+    </div>
+    <div class="beat-row">
+      <div class="beat-label">Beat 1</div>
+      <div class="beat-cell scene">Scene A1</div>
+      <div class="beat-cell scene">Scene B1</div>
+      <div class="beat-cell scene">Scene C1</div>
+    </div>
+    <div class="beat-row">
+      <div class="beat-label">Group 1</div>
+      <div class="beat-cell group span3">Group Game #1 — explore theme together</div>
+    </div>
+    <div class="beat-row">
+      <div class="beat-label">Beat 2</div>
+      <div class="beat-cell scene">Scene A2</div>
+      <div class="beat-cell scene">Scene B2</div>
+      <div class="beat-cell scene">Scene C2</div>
+    </div>
+    <div class="beat-row">
+      <div class="beat-label">Group 2</div>
+      <div class="beat-cell group span3">Group Game #2 — raise the stakes</div>
+    </div>
+    <div class="beat-row">
+      <div class="beat-label">Beat 3</div>
+      <div class="beat-cell game span3">Scenes converge / call-backs / tag-outs</div>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:#777; line-height:1.7;">Each scene set (A, B, C) explores a different angle of the opening's theme. By Beat 3 the worlds start colliding. The Harold is ~25–30 min total.</p>
+</div>
+
+<!-- GLOSSARY -->
+<div class="section" id="glossary">
+  <h2>Key Terms</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Game of the Scene</h3>
+      <p>The unusual thing that happens + a pattern of making it more and more itself. Find it, name it internally, then heighten it.</p>
+    </div>
+    <div class="card">
+      <h3>Half Game</h3>
+      <p>When only ONE person is playing the game (reacting unusually) while the other plays it straight. Often funnier than both being weird.</p>
+    </div>
+    <div class="card">
+      <h3>Character Game</h3>
+      <p>Game driven by who the person IS (attitude, worldview, want) rather than the situation. The character's logic IS the game.</p>
+    </div>
+    <div class="card">
+      <h3>Monologue</h3>
+      <p>A real story from life, told simply. The group mines it for themes, relationships, and games to use in the Harold.</p>
+    </div>
+    <div class="card">
+      <h3>Group Game</h3>
+      <p>The whole ensemble explores one idea/game together, often in a more abstract or physical way. No scene, just theme.</p>
+    </div>
+    <div class="card">
+      <h3>Heighten</h3>
+      <p>"Yes, and" the game — each beat should take the unusual thing ONE step further. Don't reset, don't explain. Just more.</p>
+    </div>
+    <div class="card">
+      <h3>Voice of Reason</h3>
+      <p>One player reacts "normally" to the absurdity. Creates contrast. Without it, everything is chaos and nothing lands.</p>
+    </div>
+    <div class="card">
+      <h3>Tag-out</h3>
+      <p>Someone runs in, taps a player out, and takes their place — often shifting time, location, or relationship to explore the game further.</p>
+    </div>
+    <div class="card">
+      <h3>Call-back</h3>
+      <p>Revisiting a character, phrase, or idea from earlier in the Harold. The audience remembers. Make it pay off.</p>
+    </div>
+    <div class="card">
+      <h3>Object Work</h3>
+      <p>Physically committing to props/space that aren't there. Grounds scenes in reality and feeds character.</p>
+    </div>
+    <div class="card">
+      <h3>Initiation</h3>
+      <p>The first line or action that starts a scene. Best initiations contain a who, what, and a point of view baked in.</p>
+    </div>
+    <div class="card">
+      <h3>First Unusual Thing</h3>
+      <p>The moment something odd appears in a scene. Stop. Name it. That's probably your game. Build from there.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DO/DON'T -->
+<div class="section" id="dodont">
+  <h2>Do's & Don'ts</h2>
+
+  <div class="dodont">
+    <div class="do-col">
+      <h3>✓ Do</h3>
+      <ul>
+        <li>Make your scene partner look good</li>
+        <li>Find the game early, then heighten it</li>
+        <li>Have a clear point of view as your character</li>
+        <li>Be specific — "my Ford Fiesta" not "my car"</li>
+        <li>React truthfully before being clever</li>
+        <li>Support group games with commitment</li>
+        <li>Use the monologue — mine it for real themes</li>
+        <li>Trust your scene partner's choices</li>
+        <li>Let silence breathe</li>
+        <li>Call back — audiences LOVE memory</li>
+        <li>Keep the voice of reason grounded</li>
+        <li>Play the game the same way each beat, then escalate</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h3>✗ Don't</h3>
+      <ul>
+        <li>Block (deny what your partner established)</li>
+        <li>Ask questions to get out of commitment</li>
+        <li>Chase laughs at the expense of the scene</li>
+        <li>Introduce new games in beat 2 or 3</li>
+        <li>Explain the joke or the game out loud</li>
+        <li>Play multiple games at once</li>
+        <li>Make your partner wrong</li>
+        <li>Check out when you're not in a scene</li>
+        <li>Drift — keep the game consistent in tone</li>
+        <li>Be random instead of unusual</li>
+        <li>Make it about yourself instead of the ensemble</li>
+        <li>Run away from the weird thing — run toward it</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="section" id="tips">
+  <h2>Tips & Tricks</h2>
+
+  <div class="tips">
+    <div class="tip"><strong>Find the game</strong>What is the first unusual, specific, or weird thing? Name it. Build from it. That's your game — don't wait.</div>
+    <div class="tip"><strong>If/then thinking</strong>"If this is true in this world — what else is true?" Explore the logic of the game rather than escaping it.</div>
+    <div class="tip"><strong>CROW</strong>Character · Relationship · Objective · Where. Establish these fast. Scenes that drag often lack one of these.</div>
+    <div class="tip"><strong>Commit to emotion</strong>Don't be neutral. Characters with strong feelings create friction and game naturally.</div>
+    <div class="tip"><strong>Match, then lead</strong>In group games: mirror what others set up, then add one thing. Don't overpower, don't just copy.</div>
+    <div class="tip"><strong>The rule of threes</strong>Game needs ~3 beats to land. First: establish. Second: confirm. Third: audience knows what to expect — then you can subvert or pay off.</div>
+    <div class="tip"><strong>Watching from the back</strong>Your job offstage is to track themes and games so you know when/how to re-enter. Never switch off.</div>
+    <div class="tip"><strong>Tag-outs are gifts</strong>Tag out to explore a DIFFERENT angle of the same game — not to fix, escape, or take over.</div>
+    <div class="tip"><strong>Monologue mining</strong>Listen for the real emotion, the odd detail, the contradiction — not the funny line. That's your material.</div>
+    <div class="tip"><strong>Voice of reason trick</strong>When everything is crazy, being completely normal IS the comedy. Underreact. It creates contrast.</div>
+    <div class="tip"><strong>Improv mantra</strong>"Yes, and" is the foundation — but "yes, and" the GAME, not just the information.</div>
+    <div class="tip"><strong>Personal tip for you</strong>Your improv background in facilitation is gold — you read rooms well. Trust that instinct to feel when the group needs energy vs. space.</div>
+  </div>
+</div>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
