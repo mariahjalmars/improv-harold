@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Harold — UCB Improv Reference</title>
+<title>Improv Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -35,7 +35,7 @@
   }
 
   header::before {
-    content: 'HAROLD';
+    content: 'IMPROV';
     position: absolute;
     right: -10px;
     top: 50%;
@@ -92,6 +92,19 @@
   .card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .card h3 { margin-bottom: 6px; }
   .card p { font-size: 13px; line-height: 1.65; color: #b0ab9e; }
+  .card .badge {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: #2a2a2a;
+    color: #666;
+    border: 1px solid #444;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  .card .badge.class { color: var(--highlight); border-color: #554400; background: #1a1400; }
 
   .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
   @media (max-width: 600px) { .dodont { grid-template-columns: 1fr; } }
@@ -109,19 +122,18 @@
   .tip { background: var(--card); border: 1px solid var(--muted); border-radius: 2px; padding: 10px 16px; font-size: 12px; line-height: 1.5; color: #b0ab9e; max-width: 300px; }
   .tip strong { color: var(--highlight); display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
 
+  /* Harold tab */
   .harold-map { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 24px; margin-bottom: 24px; }
-
   .beat-row { display: grid; grid-template-columns: 80px 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; align-items: center; }
   .beat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #666; }
-
   .beat-cell { background: var(--muted); border-radius: 3px; padding: 10px 12px; font-size: 12px; text-align: center; color: #ccc; border: 1px solid transparent; }
   .beat-cell.opening { background: #1a1a2e; border-color: #ffe066; color: var(--highlight); font-size: 11px; }
   .beat-cell.group { background: #1a2e1a; border-color: var(--green); color: var(--green); }
   .beat-cell.scene { background: #2e1a1a; border-color: #ff6b35; color: #ff9060; }
   .beat-cell.game { background: #1a1a2e; border-color: #7b68ee; color: #a090ff; }
-  .beat-cell.span2 { grid-column: span 2; }
   .beat-cell.span3 { grid-column: span 3; }
 
+  /* Mapping tab */
   .mapping-explainer { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 24px; margin-bottom: 20px; }
   .mapping-explainer p { font-size: 13px; line-height: 1.8; color: #b0ab9e; margin-bottom: 12px; }
   .mapping-explainer p:last-child { margin-bottom: 0; }
@@ -132,7 +144,6 @@
 
   .transitions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
   @media (max-width: 600px) { .transitions { grid-template-columns: 1fr; } }
-
   .trans-card { background: var(--card); border: 1px solid var(--muted); border-radius: 4px; padding: 20px; }
   .trans-card .arrow { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); margin-bottom: 4px; display: block; }
   .trans-card h3 { margin-bottom: 10px; }
@@ -151,21 +162,21 @@
 <body>
 
 <header>
-  <h1>The <span>Harold</span></h1>
-  <div class="subtitle">UCB Improv · Quick Reference · Maja's Edition</div>
+  <h1>Improv <span>Guide</span></h1>
+  <div class="subtitle">UCB · The Harold · Maja's Edition</div>
 </header>
 
 <nav>
-  <button class="tab active" onclick="show('structure', this)">Structure</button>
+  <button class="tab active" onclick="show('harold', this)">The Harold</button>
   <button class="tab" onclick="show('mapping', this)">Mapping & Beats</button>
   <button class="tab" onclick="show('glossary', this)">Glossary</button>
   <button class="tab" onclick="show('dodont', this)">Do's & Don'ts</button>
   <button class="tab" onclick="show('tips', this)">Tips & Tricks</button>
 </nav>
 
-<!-- STRUCTURE -->
-<div class="section active" id="structure">
-  <h2>Harold Structure</h2>
+<!-- THE HAROLD -->
+<div class="section active" id="harold">
+  <h2>The Harold</h2>
   <div class="harold-map">
     <div class="beat-row">
       <div class="beat-label">Opening</div>
@@ -307,20 +318,129 @@
 
 <!-- GLOSSARY -->
 <div class="section" id="glossary">
-  <h2>Key Terms</h2>
+  <h2>Glossary</h2>
+  <p style="font-size:11px;color:#555;margin-bottom:20px;letter-spacing:1px;">Cards marked <span style="color:var(--highlight);border:1px solid #554400;background:#1a1400;padding:1px 6px;border-radius:2px;font-size:9px;">CLASS TERM</span> may be specific to your teacher or school — not official UCB manual terms.</p>
   <div class="grid">
-    <div class="card"><h3>Game of the Scene</h3><p>The unusual thing that happens + a pattern of making it more and more itself. Find it, name it internally, then heighten it.</p></div>
-    <div class="card"><h3>Half Game</h3><p>When only ONE person is playing the game while the other plays it straight. Often funnier than both being weird.</p></div>
-    <div class="card"><h3>Character Game</h3><p>Game driven by who the person IS — attitude, worldview, want. The character's logic IS the game.</p></div>
-    <div class="card"><h3>Monologue</h3><p>A real story from life, told simply. The group mines it for themes, relationships, and games to use in the Harold.</p></div>
-    <div class="card"><h3>Group Game</h3><p>The whole ensemble explores one idea together, often abstractly. No scene, just theme.</p></div>
-    <div class="card"><h3>Heighten</h3><p>"Yes, and" the game — each beat takes the unusual thing ONE step further. Don't reset, don't explain. Just more.</p></div>
-    <div class="card"><h3>Voice of Reason</h3><p>One player reacts "normally" to the absurdity. Creates contrast. Without it, everything is chaos and nothing lands.</p></div>
-    <div class="card"><h3>Tag-out</h3><p>Someone runs in, taps a player out, takes their place — shifting time, location, or relationship to explore the game further.</p></div>
-    <div class="card"><h3>Call-back</h3><p>Revisiting a character, phrase, or idea from earlier in the Harold. The audience remembers. Make it pay off.</p></div>
-    <div class="card"><h3>Mapping</h3><p>Tracking each scene's game, characters, and theme from the back wall so you know when and how to re-enter, call-back, or converge.</p></div>
-    <div class="card"><h3>Object Work</h3><p>Physically committing to props/space that aren't there. Grounds scenes in reality and feeds character.</p></div>
-    <div class="card"><h3>First Unusual Thing</h3><p>The moment something odd appears. Stop. Name it. That's probably your game. Build from there.</p></div>
+
+    <div class="card">
+      <h3>Game of the Scene</h3>
+      <p>The unusual thing that happens + a pattern of making it more and more itself. Find it, name it internally, then heighten it.</p>
+    </div>
+
+    <div class="card">
+      <h3>Half Game</h3>
+      <p>When only ONE person is playing the game while the other plays it straight. Often funnier than both being weird.</p>
+    </div>
+
+    <div class="card">
+      <h3>Character Game</h3>
+      <p>Game driven by who the person IS — attitude, worldview, want. The character's logic IS the game.</p>
+    </div>
+
+    <div class="card">
+      <h3>Monologue</h3>
+      <p>A real story from life, told simply. The group mines it for themes, relationships, and games to use in the Harold.</p>
+    </div>
+
+    <div class="card">
+      <h3>Group Game</h3>
+      <p>The whole ensemble explores one idea together, often abstractly. No scene, just theme.</p>
+    </div>
+
+    <div class="card">
+      <h3>Heighten</h3>
+      <p>"Yes, and" the game — each beat takes the unusual thing ONE step further. Don't reset, don't explain. Just more.</p>
+    </div>
+
+    <div class="card">
+      <h3>Voice of Reason</h3>
+      <p>One player reacts "normally" to the absurdity. Creates contrast. Without it, everything is chaos and nothing lands.</p>
+    </div>
+
+    <div class="card">
+      <h3>Tag-out</h3>
+      <p>Someone runs in, taps a player out, takes their place — shifting time, location, or relationship to explore the game further.</p>
+    </div>
+
+    <div class="card">
+      <h3>Call-back</h3>
+      <p>Revisiting a character, phrase, or idea from earlier in the Harold. The audience remembers. Make it pay off.</p>
+    </div>
+
+    <div class="card">
+      <h3>Mapping</h3>
+      <p>Tracking each scene's game, characters, and theme from the back wall so you know when and how to re-enter, call-back, or converge.</p>
+    </div>
+
+    <div class="card">
+      <h3>Object Work</h3>
+      <p>Physically committing to props/space that aren't there. Grounds scenes in reality and feeds character.</p>
+    </div>
+
+    <div class="card">
+      <h3>First Unusual Thing</h3>
+      <p>The moment something odd appears. Stop. Name it. That's probably your game. Build from there.</p>
+    </div>
+
+    <div class="card">
+      <h3>If This Is True, What Else Is True?</h3>
+      <p>The core UCB question for playing the game. Once you find the unusual thing, use this to explore its logic and heighten it beat by beat.</p>
+    </div>
+
+    <div class="card">
+      <h3>Consequence</h3>
+      <p>Making the events of a scene actually matter. If the game has no stakes or fallout, it stays flat. Raise the cost of what's happening — for the characters, not just the audience.</p>
+    </div>
+
+    <div class="card">
+      <h3>Comedic Tension</h3>
+      <p>The gap between what the audience can see and what the character refuses to acknowledge. The longer you hold it without breaking, the funnier it gets. Don't resolve it too early.</p>
+    </div>
+
+    <div class="card">
+      <h3>Full Analogy</h3>
+      <p>When a character says something is "like X" — play it fully as if it IS X. Don't half-commit. Taking the comparison all the way is where the comedy lives.</p>
+    </div>
+
+    <div class="card">
+      <h3>Twisted Logic</h3>
+      <p>A character justifying their unusual behaviour through reasoning that makes perfect sense to them — but to no one else. The internal logic is consistent; the worldview is just bent.</p>
+    </div>
+
+    <div class="card">
+      <h3>Pop a Wheelie</h3>
+      <p>Demonstrating your character's game or trait clearly for the audience — showing what your deal is. Don't be subtle about it. If you've got a game, pop it.</p>
+    </div>
+
+    <div class="card">
+      <div class="badge class">Class Term</div>
+      <h3>Game Battle</h3>
+      <p>When two players are each trying to play different games in the same scene — pulling in opposite directions. A note to get on the same page and agree on one game together.</p>
+    </div>
+
+    <div class="card">
+      <div class="badge class">Class Term</div>
+      <h3>Living Room</h3>
+      <p>"The Living Room" is also a longform format inspired by the Harold. As a scene term, it refers to a grounded, domestic setting used to establish base reality before the game emerges.</p>
+    </div>
+
+    <div class="card">
+      <div class="badge class">Class Term</div>
+      <h3>Riders Room</h3>
+      <p>A backstage or offstage space used in rehearsal context — often where the ensemble waits, watches, and maps before entering. Staying sharp in the riders room means tracking everything.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cut To</h3>
+      <p>An edit that jumps the scene forward or backward in time — e.g. "cut to: one year later" or "cut to: the night before." Used to explore the game in a different moment without losing the thread.</p>
+    </div>
+
+    <div class="card">
+      <div class="badge class">Class Term</div>
+      <h3>Workshop an Idea</h3>
+      <p>In rehearsal: pausing a scene to explore a moment together before continuing. Not done in performance — it's a rehearsal tool to find what a game could become before committing.</p>
+    </div>
+
   </div>
 </div>
 
@@ -343,6 +463,9 @@
         <li>Call back — audiences LOVE memory</li>
         <li>Keep the voice of reason grounded</li>
         <li>Return to the same game in Beat 2, escalated</li>
+        <li>Let consequences land — don't skip past them</li>
+        <li>Hold comedic tension as long as you dare</li>
+        <li>Pop a wheelie — show us your game clearly</li>
       </ul>
     </div>
     <div class="dont-col">
@@ -353,13 +476,15 @@
         <li>Chase laughs at the expense of the scene</li>
         <li>Introduce new games in Beat 2 or 3</li>
         <li>Explain the joke or the game out loud</li>
-        <li>Play multiple games at once</li>
+        <li>Play multiple games at once — game battle</li>
         <li>Make your partner wrong</li>
         <li>Switch off when watching from the back</li>
         <li>Drift — keep the game consistent in tone</li>
         <li>Be random instead of unusual</li>
         <li>Force convergence in Beat 3 — trust the map</li>
         <li>Run away from the weird thing</li>
+        <li>Half-commit to an analogy — go all the way</li>
+        <li>Resolve tension too early for comfort</li>
       </ul>
     </div>
   </div>
@@ -380,6 +505,8 @@
     <div class="tip"><strong>Monologue mining</strong>Listen for real emotion, odd detail, contradiction — not the funny line. That's your material.</div>
     <div class="tip"><strong>Voice of reason trick</strong>When everything is crazy, being completely normal IS the comedy. Underreact.</div>
     <div class="tip"><strong>Beat 2 question</strong>Ask yourself: "What does this game want to become?" Follow that. Don't reinvent.</div>
+    <div class="tip"><strong>Twisted logic</strong>Stay inside your character's warped worldview. The more consistent the logic, the funnier the behaviour.</div>
+    <div class="tip"><strong>Hold the tension</strong>Don't let characters off the hook too soon. Comedic tension is a rubber band — stretch it before you snap it.</div>
     <div class="tip"><strong>Your edge</strong>You read rooms well — trust that. Your facilitation instinct for when a group needs energy vs. space? That's gold in ensemble improv.</div>
   </div>
 </div>
